@@ -1,0 +1,30 @@
+{
+  "name": "flattify",
+  "version": "1.0.0",
+  "description": "upload icons and convert them into flat ones",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icewassim/flattify.git"
+  },
+  "keywords": [
+    "flat",
+    "icons",
+    "shadow",
+    "material"
+  ],
+  "author": "icewassim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icewassim/flattify/issues"
+  },
+  "homepage": "https://github.com/icewassim/flattify#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.3.14",
+    "express": "^4.13.4",
+    "nodemon": "^1.8.1"
+  }
+}
