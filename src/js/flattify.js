@@ -7,7 +7,8 @@ class ImgCanvas {
 	}
 
 	init() {
-
+		imgDataToMatrix();
+		markBackground();
 	}
 
 	imgDataToMatrix() {
@@ -25,5 +26,12 @@ class ImgCanvas {
 	      }
 	}
 
+	markBackground() {
+	    for (let i = 0; i < this.imgMatrixg.length; i++) {
+		    for (let j = 0; j < this.imgMatrixg[i].length; j++) {
+		      this.imgMatrixg[i][j].background = (this.imgMatrixg[i][j].a === 0);
+		    }
+		}
+	}
 
 }
