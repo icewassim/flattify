@@ -1,6 +1,6 @@
-var express = require('express');
-var path = require('path');
-var app = express();
+var express = require('express'),
+    path = require('path'),
+    app = express();
 
 app.listen(3000,function (err) {
   if(err) {
@@ -9,8 +9,9 @@ app.listen(3000,function (err) {
   console.log('listenting to port 3000');
 });
 
-app.get('/twitter.jpg',function (rq,res) {
-  res.status(200).sendFile(path.join(__dirname+'/twitter.jpg'));
+app.get('/source.png',function (rq,res) {
+  console.log(path.join(__dirname+'/public/pics/soundcloud.png'));
+  res.status(200).sendFile(path.join(__dirname+'/public/pics/soundcloud.png'));
 })
 
 app.get('/',function(req, res) {
