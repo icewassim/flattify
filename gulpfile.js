@@ -4,8 +4,6 @@ var gulp = require('gulp'),
 	nodemon = require('gulp-nodemon'),
 	babel = require('gulp-babel');
 
-
-
 gulp.task('default', function () {
 	nodemon({
 		script:'./app.js',
@@ -18,10 +16,9 @@ gulp.task('default', function () {
 });
 
 gulp.task('build.js', function() {
-	return gulp.src('./src/js/flattify.js')
+	return gulp.src('./src/js/*')
 		.pipe(babel({
 			presets: ['es2015']
 		}))
 		.pipe(gulp.dest('build'));
-})
-
+});

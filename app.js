@@ -15,8 +15,8 @@ app.listen(port,function (err) {
 //TODO routes, controllers ,view engines
 app.get('/source.png',function (rq,res) {
   res.status(200).sendFile(path.join(__dirname+'/src/pics/soundcloud.png'));
-})
+});
 
 app.get('/',function(req, res) {
   res.status(200).sendFile(path.join(__dirname+'/index.html'));
-})
+});
