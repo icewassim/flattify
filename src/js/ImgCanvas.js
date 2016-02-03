@@ -36,3 +36,4 @@ class ImgCanvas {
 	}
 
 }
+export default ImgCanvas;
