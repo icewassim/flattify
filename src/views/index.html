@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flattify</title>
+  </head>
+  <body>
+     <canvas id="canvas" width="500" height="500"></canvas>
+     <canvas id="canvasOutput" width="500" height="500"></canvas>
+     <div style="display:none;">
+       <img id="source" src="/pics/soundcloud.png" width="500" height="500" >
+     </div>
+  </body>
+  <script src="/js/flattify.js"></script>
+  <style type="text/css">
+    #canvas {
+      /*background-color: #FF9154;*/
+    }
+  </style>
+  <script>
+
+  var canvas = document.getElementById('canvas');
+  var outputCanvas = document.getElementById('canvasOutput');
+  var ctx = canvas.getContext('2d');
+  // Draw slice
+  function draw() {
+    ctx.drawImage(document.getElementById('source'),0,0);
+  }
+
+  function imgDataToMatrix(imgData,height, width) {
+    'use strict';
+    var imgMatrix = [];
+    for (var i = 0; i < height; i++) {
+      var lines = [];
+       for (var j = 0; j < width*4 ;j = j+4) {
+          var pixel = {};
+          pixel.r = imgData.data[j+(i*width*4)];
+          pixel.g = imgData.data[j+1+(i*width*4)];
+          pixel.b = imgData.data[j+2+(i*width*4)];
+          pixel.a = imgData.data[j+3+(i*width*4)];
+          lines.push(pixel);
+        }
+        imgMatrix.push(lines);
+      }
+      return imgMatrix;
+  }
+
+  function MatrixToImgData (imgMatrixg,imgDataInput) {
+    'use strict';
+    var imgDataIndex = 0;
+    for (var i = 0; i < imgMatrixg.length; i++) {
+      for (var j = 0; j < imgMatrixg[i].length; j++) {
+        imgDataInput.data[imgDataIndex ] = imgMatrixg[i][j].r;
+        imgDataInput.data[imgDataIndex + 1] = imgMatrixg[i][j].g;
+        imgDataInput.data[imgDataIndex + 2] = imgMatrixg[i][j].b;
+        imgDataInput.data[imgDataIndex + 3] = imgMatrixg[i][j].a;
+        imgDataIndex = imgDataIndex + 4;
+      };
+    };
+    return imgDataInput;
+  }
+
+ function shaderdMatrix(imgMatrixg) {
+  'use strict';
+  for (var i = 0; i < imgMatrixg.length; i++) {
+    var foundShader = false;
+    var decrease = 0;
+    for (var j= 0; j < imgMatrixg[i].length; j++) {
+        if(imgMatrixg[i][j].background !== true) {
+          for (var decrease = 1; decrease + i < imgMatrixg.length && decrease + j < imgMatrixg.length ; decrease++) {
+            if(imgMatrixg[i+decrease][j+decrease].background === true)
+            {
+              imgMatrixg[i + decrease][j+decrease].r = 0;
+              imgMatrixg[i + decrease][j+decrease].g = 0;
+              imgMatrixg[i + decrease][j+decrease].b = 0;
+              imgMatrixg[i + decrease][j+decrease].a = 70;
+            }
+          }
+        }
+      }
+  }
+  return imgMatrixg;
+ }
+
+ function isInColorRange(color, minRange, maxRange) {
+   'use strict';
+   if(  minRange.r <= color.r && maxRange.r >= color.r &&
+        minRange.g <= color.g && maxRange.g >= color.g &&
+        minRange.b <= color.b && maxRange.b >= color.b )
+    return true;
+ }
+
+ function markBackground(minRange,maxRange,imgMatrixg,backgroundColor) {
+  'use strict';
+  for (var i = 0; i < imgMatrixg.length; i++) {
+    for (var j = 0; j < imgMatrixg[i].length; j++) {
+      if(imgMatrixg[i][j].a === 0 )
+      {
+        imgMatrixg[i][j].background = true;
+      }
+    }
+  }
+  return imgMatrixg;
+ }
+
+ function halfShadow(imgMatrixg) {
+  'use strict';
+  for (var i = 0; i < imgMatrixg.length; i++) {
+    for (var j = imgMatrixg[i].length/2; j < imgMatrixg[i].length; j++) {
+      imgMatrixg[i][j].g  = imgMatrixg[i][j].g - 20;
+    }
+  }
+  return imgMatrixg;
+ }
+/*
+  window.onload = function() {
+      draw();
+      var height = 500;
+      var width = 500;
+      var imgData = ctx.getImageData(0,0,height,width);
+    //  var ImgCanvas = new ImgCanvas(ImgCanvas);
+
+      return true;
+      var imgMatrixg = imgDataToMatrix(imgData,height,width);
+      var shared = markBackground({r:0},{r:0},imgMatrixg);
+      var shared = shaderdMatrix( markBackground({r:200},{r:255},imgMatrixg,24) );
+      var halfShadowed = halfShadow(imgDataToMatrix(imgData,height,width));
+      var newImageData = MatrixToImgData(shared,imgData);
+/*
+      0 -> 2000 (4 * width)
+      2000 -> 4000 (4*with * 2)
+      4000 -> 6000 (4*with * 3)
+
+      ctx.putImageData(imgData,0,0);
+    }
+    */
+  </script>
+</html>

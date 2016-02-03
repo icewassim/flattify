@@ -1,8 +1,14 @@
 const express = require('express'),
+      consolidate = require('consolidate'),
       path = require('path'),
       app = express();
 
 let port =  process.env.PORT || 3000;
+app.engine('html', consolidate.handlebars);
+app.use('/pics', express.static(__dirname+'/pics'));
+app.use('/js', express.static(__dirname+'/../build'));
+app.set('view engine', 'html');
+app.set('views', __dirname+'/views');
 
 app.listen(port,function (err) {
   if(err) {
@@ -11,12 +17,6 @@ app.listen(port,function (err) {
   console.log('listenting to port ',port);
 });
 
-
-//TODO routes, controllers ,view engines
-app.get('/source.png',function (rq,res) {
-  res.status(200).sendFile(path.join(__dirname+'/pics/soundcloud.png'));
-});
-
 app.get('/',function(req, res) {
-  res.status(200).sendFile(path.join(__dirname+'/index.html'));
+  res.status(200).render('index',{hello:"lol"});
 });
