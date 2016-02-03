@@ -45,10 +45,4 @@ gulp.task('js:compile', ['js:lint'], function() {
 				.bundle()
 				.pipe(source('flattify.js'))
   			.pipe(gulp.dest('./build/'));
-	//
-	// return gulp.src('./src/js/*')
-	// 	.pipe(babel({
-	// 		presets: ['es2015']
-	// 	}))
-	// 	.pipe(gulp.dest('build'));
 });
