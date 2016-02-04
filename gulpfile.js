@@ -17,7 +17,7 @@ gulp.task('default', function() {
     execMap: {
       js: "node --harmony --use_strict"
     },
-    ignore: 'node_modules/**'
+    ignore: ['node_modules/**', '.git'],
   })
 });
 
