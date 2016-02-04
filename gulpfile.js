@@ -35,7 +35,7 @@ gulp.task('js:lint', function() {
 
 gulp.task('build', function() {
   runSequence('clean', 'js:compile');
-})
+});
 
 gulp.task('js:compile', ['js:lint'], function() {
   return browserify()
