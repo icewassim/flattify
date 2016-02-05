@@ -1,19 +1,26 @@
 import ImgCanvas from './ImgCanvas';
 
-let canvas = document.getElementById('canvas');
-let outputCanvas = document.getElementById('canvasOutput');
-let ctx = canvas.getContext('2d');
+function initCanvas(canvas,img,margin) {
+  let ctx = canvas.getContext('2d');
 
-function draw() {
-  ctx.drawImage(document.getElementById('source'), 0, 0);
+  canvas.height = img.height +margin;
+  canvas.width = img.width +margin;
+  ctx.drawImage(img, margin/2, margin/2);
+  return ctx;
 }
 
 window.onload = function() {
-  draw();
-  let height = 500;
-  let width = 500;
-  let imgData = ctx.getImageData(0, 0, height, width);
-  let iconCanvas = new ImgCanvas(imgData);
+  let img = document.getElementById("source"),
+  	  canvas = document.getElementById('canvas'),
+  	  width = parseInt(img.width),
+  	  height = parseInt(img.height),
+  	  imgData,
+  	  iconCanvas,
+  	  ctx;
+
+  ctx = initCanvas(canvas ,img ,0);
+  imgData = ctx.getImageData(0, 0, height, width);
+  iconCanvas = new ImgCanvas(imgData);
   iconCanvas.init();
   iconCanvas.shadowfy();
   ctx.putImageData(iconCanvas.imgData, 0, 0);
