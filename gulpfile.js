@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('gulp'),
+let gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   nodemon = require('gulp-nodemon'),
   babelify = require('babelify'),
@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   fs = require('fs'),
   runSequence = require('run-sequence'),
   del = require('del'),
+  gulpMocha = require('gulp-mocha'),
   browserify = require('browserify');
 
 gulp.task('default', function() {
@@ -18,7 +19,7 @@ gulp.task('default', function() {
       js: "node --harmony --use_strict"
     },
     ignore: ['node_modules/**', '.git', 'build/*'],
-  })
+  });
 });
 
 gulp.task('clean', function() {
@@ -48,4 +49,15 @@ gulp.task('js:compile', ['js:lint'], function() {
     .bundle()
     .pipe(source('flattify.js'))
     .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('test', function () {
+  let babel = require('babel-register');
+  gulp.src('tests/*.js',{read: false})
+  .pipe(gulpMocha({
+    reporter: 'spec',
+    compilers: {
+               js: babel
+           }
+  }))
 });
