@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 app.engine('html', consolidate.handlebars);
 app.use('/pics', express.static(__dirname + '/pics'));
 app.use('/js', express.static(__dirname + '/../build'));
+app.use('/css', express.static(__dirname + '/css'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
