@@ -2,6 +2,9 @@ const RGBA_COUNT = 4;
 class ImgCanvas {
 
   constructor(imgData) {
+    if (!imgData) {
+      return false;
+    }
     this._imgData = imgData;
     this.height = imgData.height;
     this.width = imgData.width;
@@ -16,6 +19,10 @@ class ImgCanvas {
   get imgData() {
     this.matrixToImgData();
     return this._imgData;
+  }
+
+  getImgMatrixTest() {
+    return this.imgMatrix;
   }
 
   matrixToImgData() {
@@ -35,20 +42,20 @@ class ImgCanvas {
     for (let i = 0; i < this.height; i++) {
       let lines = [];
       for (let j = 0; j < this.width * RGBA_COUNT; j = j + RGBA_COUNT) {
-        lines.push(this.getPixelFromImgData(i,j));
+        lines.push(this.getPixelFromImgData(i, j));
       }
       this.imgMatrix.push(lines);
     }
   }
 
-  setShadowPixel(linesIndex, columnsIndex,shadowOffset, r, g, b, a) {
+  setShadowPixel(linesIndex, columnsIndex, shadowOffset, r, g, b, a) {
     this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = r;
     this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = g;
     this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = b;
     this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = a;
   }
 
-  getPixelFromImgData(linesIndex,columnsIndex) {
+  getPixelFromImgData(linesIndex, columnsIndex) {
     let pixel = {};
     pixel.r = this._imgData.data[columnsIndex + (linesIndex * this.width * RGBA_COUNT)];
     pixel.g = this._imgData.data[columnsIndex + 1 + (linesIndex * this.width * RGBA_COUNT)];
@@ -63,7 +70,7 @@ class ImgCanvas {
         if (this.imgMatrix[i][j].background !== true) {
           for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix.length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j + shadowOffset].background === true) {
-              this.setShadowPixel(i ,j ,shadowOffset , 0, 0, 0, 70);
+              this.setShadowPixel(i, j, shadowOffset, 0, 0, 0, 70);
             }
           }
         }

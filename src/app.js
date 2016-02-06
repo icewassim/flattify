@@ -3,7 +3,7 @@ const express = require('express'),
   path = require('path'),
   app = express();
 
-let port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 app.engine('html', consolidate.handlebars);
 app.use('/pics', express.static(__dirname + '/pics'));
 app.use('/js', express.static(__dirname + '/../build'));
