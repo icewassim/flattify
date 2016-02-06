@@ -17,25 +17,25 @@ describe('ImgCanvas test', function() {
     });
   });
 
-  it("should not create a empty object", function() {
+  it("should return an iconCanvas Object", function() {
     let iconCanvas = new ImgCanvas(imgData);
     assert.equal(testLib.isEmptyObj(iconCanvas), false);
 
   });
-  it('should have the correct height and width', function() {
+  it('should have valid dimensions ', function() {
     let iconCanvas = new ImgCanvas(imgData);
     assert.equal(iconCanvas.getAttributes().height,imgData.height);
     assert.equal(iconCanvas.getAttributes().width,imgData.width);
   });
 
-  it('should return false if imgData is empty', function () {
+  it('should return an empty object if imgData is missing', function () {
     let iconCanvas = new ImgCanvas();
     assert.equal(testLib.isEmptyObj(iconCanvas),true);
   });
 
-  it('should transform imageData to Matrix', function() {
-    let iconCanvas;
-    let imgMatrix;
+  it('should transform imageData to a Matrix with valid dimensions', function() {
+    let iconCanvas,
+        imgMatrix;
 
     iconCanvas = new ImgCanvas(imgData);
     iconCanvas.imgDataToMatrix();
