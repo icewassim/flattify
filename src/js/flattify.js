@@ -1,26 +1,34 @@
 import ImgCanvas from './ImgCanvas';
 
 function initCanvas(canvas, img, margin, backgroundColor) {
+  'use strict';
   let ctx = canvas.getContext('2d');
-
   canvas.height = img.height + margin;
   canvas.width = img.width + margin;
-  circularCanvas(canvas, img, backgroundColor, ctx);
+  initBackground(canvas, img, backgroundColor, ctx, "circle");
   ctx.drawImage(img, margin / 2, margin / 2);
   return ctx;
 }
 
-function circularCanvas(canvas, img, backgroundColor, ctx) {
-  var centerX = canvas.width / 2;
-  var centerY = canvas.height / 2;
-  var radius = Math.max(img.height, img.width) - 90;
+function initBackground(canvas, img, backgroundColor, ctx, shape) {
+  'use strict';
+  let centerX = canvas.width / 2,
+    centerY = canvas.height / 2,
+    radius = Math.max(img.height, img.width) - 90;
+
   ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  if (shape === "rect") {
+    ctx.rect(0, 0, canvas.height, canvas.width, false);
+  } else if (shape === "circle") {
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  }
+  window.ctx = ctx;
   ctx.fillStyle = backgroundColor;
   ctx.fill();
 }
 
 window.onload = function() {
+  'use strict';
   let img = document.getElementById("source"),
     canvas = document.getElementById('canvas'),
     width = parseInt(img.width),
@@ -39,7 +47,6 @@ window.onload = function() {
     b: 255,
     a: 255
   });
-  //iconCanvas.init();
   iconCanvas.shadowfy();
   ctx.putImageData(iconCanvas.imgData, 0, 0);
 };
