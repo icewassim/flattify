@@ -39,7 +39,7 @@ class ImgCanvas {
   }
 
   imgDataToMatrix() {
-    for (let i = 0; i < this.height; i++) {
+    for (let i = 0; i < this.height ; i++) {
       let lines = [];
       for (let j = 0; j < this.width * RGBA_COUNT; j = j + RGBA_COUNT) {
         lines.push(this.getPixelFromImgData(i, j));
@@ -48,11 +48,11 @@ class ImgCanvas {
     }
   }
 
-  setShadowPixel(linesIndex, columnsIndex, shadowOffset, r, g, b, a) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = r;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = g;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = b;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = a;
+  setShadowPixel(linesIndex, columnsIndex, shadowOffset, pixel) {
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = pixel.r;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = pixel.g;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = pixel.b;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = pixel.a;
   }
 
   getPixelFromImgData(linesIndex, columnsIndex) {
@@ -70,7 +70,7 @@ class ImgCanvas {
         if (this.imgMatrix[i][j].background !== true) {
           for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix.length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j + shadowOffset].background === true) {
-              this.setShadowPixel(i, j, shadowOffset, 0, 0, 0, 70);
+              this.setShadowPixel(i, j, shadowOffset, {r:0 ,g:0 ,b:0 ,a:70});
             }
           }
         }
@@ -79,9 +79,9 @@ class ImgCanvas {
   }
 
   halfMaterial() {
-    for (let i = 0; i < imgMatrix.length; i++) {
-      for (let j = imgMatrix[i].length / 2; j < imgMatrix[i].length; j++) {
-        imgMatrix[i][j].g = imgMatrix[i][j].g - 20;
+    for (let i = 0; i < this.imgMatrix.length; i++) {
+      for (let j = this.imgMatrix[i].length / 2; j < this.imgMatrix[i].length; j++) {
+        this.imgMatrix[i][j].g = this.imgMatrix[i][j].g - 20;
       }
     }
   }

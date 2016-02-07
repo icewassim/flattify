@@ -16,10 +16,11 @@ window.onload = function() {
     height = parseInt(img.height),
     imgData,
     iconCanvas,
+    margin = 100,
     ctx;
 
-  ctx = initCanvas(canvas, img, 0);
-  imgData = ctx.getImageData(0, 0, height, width);
+  ctx = initCanvas(canvas, img, margin);
+  imgData = ctx.getImageData(0, 0, height+margin, width+margin);
   iconCanvas = new ImgCanvas(imgData);
   iconCanvas.init();
   iconCanvas.shadowfy();
