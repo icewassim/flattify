@@ -1,6 +1,6 @@
 'use strict';
 
-let gulp = require('gulp'),
+var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   nodemon = require('gulp-nodemon'),
   babelify = require('babelify'),
@@ -52,7 +52,7 @@ gulp.task('js:compile', ['js:lint'], function() {
 });
 
 gulp.task('test', function () {
-  let babel = require('babel-register');
+  var babel = require('babel-register');
   gulp.src('tests/*.js',{read: false})
   .pipe(gulpMocha({
     reporter: 'spec',
