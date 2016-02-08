@@ -1,11 +1,11 @@
 import ImgCanvas from './ImgCanvas';
 
-function initCanvas(canvas, img, margin, backgroundColor) {
+function initCanvas(canvas, img, margin, backgroundColor,shape) {
   'use strict';
   let ctx = canvas.getContext('2d');
   canvas.height = img.height + margin;
   canvas.width = img.width + margin;
-  initBackground(canvas, img, backgroundColor, ctx, "circle");
+  initBackground(canvas, img, backgroundColor, ctx, shape);
   ctx.drawImage(img, margin / 2, margin / 2);
   return ctx;
 }
@@ -38,7 +38,42 @@ window.onload = function() {
     margin = 100,
     ctx;
 
-  ctx = initCanvas(canvas, img, margin, 'rgba(0, 184, 255, 1)');
+  document.getElementById("circular").onclick = function() {
+    'use strict';
+    ctx = initCanvas(canvas, img, margin, 'rgba(0, 184, 255, 1)','circle');
+    imgData = ctx.getImageData(0, 0, height + margin, width + margin);
+    iconCanvas = new ImgCanvas(imgData);
+    iconCanvas.init({
+      r: 0,
+      g: 184,
+      b: 255,
+      a: 255
+    });
+    iconCanvas.shadowfy();
+    ctx.putImageData(iconCanvas.imgData, 0, 0);
+  };
+
+  document.getElementsById('backgroundColor').onclick = function() {
+    var color = document.getElementById("backgroundColorValue").val();
+    
+  }
+
+  document.getElementById("rect").onclick = function() {
+    'use strict';
+    ctx = initCanvas(canvas, img, margin, 'rgba(0, 184, 255, 1)','rect');
+    imgData = ctx.getImageData(0, 0, height + margin, width + margin);
+    iconCanvas = new ImgCanvas(imgData);
+    iconCanvas.init({
+      r: 0,
+      g: 184,
+      b: 255,
+      a: 255
+    });
+    iconCanvas.shadowfy();
+    ctx.putImageData(iconCanvas.imgData, 0, 0);
+  };
+
+  ctx = initCanvas(canvas, img, margin, 'rgba(0, 184, 255, 1)','rect');
   imgData = ctx.getImageData(0, 0, height + margin, width + margin);
   iconCanvas = new ImgCanvas(imgData);
   iconCanvas.init({
