@@ -1,4 +1,5 @@
-import ImgCanvas from './ImgCanvas';
+//import ImgCanvas from './ImgCanvas';
+import CanvasController from './canvasController';
 
 function initCanvas(canvas, img, margin, backgroundColor,shape) {
   'use strict';
@@ -22,7 +23,6 @@ function initBackground(canvas, img, backgroundColor, ctx, shape) {
   } else if (shape === "circle") {
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
   }
-  window.ctx = ctx;
   ctx.fillStyle = backgroundColor;
   ctx.fill();
 }
@@ -38,6 +38,11 @@ window.onload = function() {
     margin = 100,
     ctx;
 
+
+  var canvasController = new CanvasController("canvas","source",100);
+  canvasController.init();
+  };
+/*  
   document.getElementById("circular").onclick = function() {
     ctx = initCanvas(canvas, img, margin, 'rgba(0, 184, 255, 1)','circle');
     imgData = ctx.getImageData(0, 0, height + margin, width + margin);
@@ -96,3 +101,4 @@ window.onload = function() {
   iconCanvas.shadowfy();
   ctx.putImageData(iconCanvas.imgData, 0, 0);
 };
+*/
