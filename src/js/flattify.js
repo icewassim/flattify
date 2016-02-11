@@ -39,7 +39,7 @@ window.onload = function() {
     ctx;
 
 
-  var canvasController = new CanvasController("canvas","source",100);
+  var canvasController = new CanvasController("canvas","source");
   canvasController.init();
   };
 /*  
