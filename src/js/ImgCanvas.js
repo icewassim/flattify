@@ -22,10 +22,6 @@ class ImgCanvas {
     return this._imgData;
   }
 
-  getImgMatrixTest() {
-    return this.imgMatrix;
-  }
-
   matrixToImgData() {
     let RGBIndex = 0;
     for (let i = 0; i < this.imgMatrix.length; i++) {
