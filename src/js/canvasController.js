@@ -14,7 +14,8 @@ class canvasController {
         b: 255,
         a: 255
       },
-      shape: "rect"
+      shape: "rect",
+      isShadowfied :true
     };
 
     if (typeof(options) === "object") {
@@ -38,7 +39,8 @@ class canvasController {
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
-    this.iconCanvas.shadowfy();
+    if(this.options.isShadowfied === true)
+      this.iconCanvas.shadowfy();
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
   }
 
@@ -54,7 +56,8 @@ class canvasController {
       this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     }
 
-    this.ctx.fillStyle = "rgba(" + this.options.backgroundColor.r + "," +
+    this.ctx.fillStyle = "rgba(" + 
+      this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
       this.options.backgroundColor.b + "," +
       "1)";
@@ -62,9 +65,64 @@ class canvasController {
     this.ctx.fill();
   }
 
-  setBackground(shape) {
-    this.shape = shape;
-    this.reloadCanvas();
+  setBackgroundShape(shape) {
+    if(typeof(shape) === "string" && shape.length > 0)
+      this.options.shape = shape;
+  }
+
+
+  setBackgroundColor(color) {
+    let pixel = this.rgbaToPixel(color);
+    
+    console.log(pixel);
+    if(this.isValidPixel(pixel) === false) {
+      console.error("invalid color");
+      return false;
+    }
+
+    console.log(pixel);
+    this.options.backgroundColor = pixel;
+  }
+
+  reloadCanvas() {
+    let imgData;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.initBackground();
+    this.ctx.drawImage(this.icon, this.options.margin / 2, this.options.margin / 2);
+    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
+    this.iconCanvas = new ImgCanvas(imgData);
+    this.iconCanvas.init(this.options.backgroundColor);
+    if(this.options.isShadowfied === true)
+      this.iconCanvas.shadowfy();
+    this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
+  }
+
+  rgbaToPixel(rgbaColor) {
+    let rgbaTab = rgbaColor.replace("rgba(","").replace(")","").split(",");
+    return {
+      r: parseInt(rgbaTab[0]),
+      g: parseInt(rgbaTab[1]),
+      b: parseInt(rgbaTab[2]),
+      a: 255
+    };
+  }
+
+  isValidPixel(pixel) {
+    let count = 0;
+    if (typeof(pixel) !== "object")
+      return false;
+
+    for (let i in pixel) {
+      count ++;
+      if(typeof(pixel[i]) !== "number"  || pixel[i] > 255 || pixel[i] < 0)
+        return false;
+    }
+
+    if(count != 4)
+      return false;
+
+    return true;
+
   }
 
   shadowfy() {
