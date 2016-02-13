@@ -1,3 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #FBFBFB;
+}
+#flattify-logo {
+  font-size: 30px;
+  font-family: sans-serif;
+  color: #1185FC;
+  text-transform: uppercase;
+}
+#container {
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
 #canvas {
   background-image: url("/pics/transparent.png");
+}
+header {
+  background-color: white;
+  padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  display: block;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.22);
+  height: 80px;
+}
+.download-button{
+  background-color: #58CE21;
+  font-size: 20px;
+  padding: 11px;
+  padding-left: 30px;
+  cursor: pointer;
+  padding-right: 30px;
+  color: white;
+  font-family: sans-serif;
+  float: right;
+  border: none;
+  margin-top: -38px;
+  border-radius: 5px;
+}
+.controls-container {
+  float: right;
+  text-align:right;
+}
+#rect,#circular {
+  height: 70px;
+  width: 70px;
+  border: 4px solid #0086CD;
+  background-color: #00B8FF;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#circular {
+  border-radius: 50%;
+}
+
+.component-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
 }

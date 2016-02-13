@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Flattify</title>
-  </head>
-  <body>
-     <link rel="stylesheet" href="css/flattify.css">
-     <canvas id="canvas" width="500" height="500"></canvas>
-     <div style="display:none;">
-       <img id="source" src="/pics/twitter.png" >
-     </div>
-     <button id="backgroundColor" >change background color</button>
-     <input type="text" value="rgba(0, 255, 102,1)" id="backgroundColorValue">
-     <button id="circular" >Circular Background</button>
-     <button id="rect">Rect Background</button>
-  </body>
-  <script src="js/flattify.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>Flattify</title>
+</head>
+
+<body>
+  <link rel="stylesheet" href="css/flattify.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <header>
+    <div id="flattify-logo">
+      Flattify
+    </div>
+    <button class="download-button">Download</button>
+  </header>
+  <div id="container">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <div style="display:none;">
+      <img id="source" src="/pics/twitter.png">
+    </div>
+    <div class="controls-container">
+      <div class="component-title">Shape</div>
+      <hr>
+      <button id="circular"></button>
+      <button id="rect"></button>
+      <br>
+      <br>
+      <br>
+      <div class="component-title">Color</div>
+      <hr>
+      <button id="backgroundColor">change background color</button>
+      <input type="color">
+      <input type="text" value="rgba(0, 255, 102,1)" id="backgroundColorValue">
+      <br>
+      <br>
+      <br>
+      <div class="component-title">Effects</div>
+      <hr>
+    </div>
+  </div>
+</body>
+<script src="js/flattify.js"></script>
 </html>
