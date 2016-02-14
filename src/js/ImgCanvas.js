@@ -67,7 +67,7 @@ class ImgCanvas {
         //if (this.imgMatrix[i][j].isBackground !== true && this.imgMatrix[i][j].a !== 0) {
         if (this.imgMatrix[i][j].isBackground === false) {
         //if(this.imgMatrix[i][j].r == 255 && this.imgMatrix[i][j].g == 255 && this.imgMatrix[i][j].b == 255){
-          for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix.length; shadowOffset++) {
+          for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix[i + shadowOffset].length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j + shadowOffset].isBackground === true) {
               this.setShadowPixel(i, j, shadowOffset);
             }
