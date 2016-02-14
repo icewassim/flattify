@@ -28,6 +28,7 @@ a {
 }
 #canvas {
   background-image: url("/pics/transparent.png");
+      background-size: 100%;
 }
 header {
   background-color: white;

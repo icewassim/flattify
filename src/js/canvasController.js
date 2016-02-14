@@ -54,6 +54,8 @@ class canvasController {
       this.ctx.rect(0, 0, this.canvas.height, this.canvas.width, false);
     } else if (this.options.shape === "circle") {
       this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    } else if(this.options.shape === "hexagone") {
+      this.drawPolygone(6,centerX, centerY, radius);
     }
 
     this.ctx.fillStyle = "rgba(" +
@@ -135,21 +137,17 @@ class canvasController {
 
   }
 
-  drawPolygone(numberOfSides) {
-    let size = 20,
-    Xcenter = 25,
-    Ycenter = 25;
-
-    this.cxt.beginPath();
-    this.cxt.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
+  drawPolygone(numberOfSides,centerX, centerY, radius) {
+    this.ctx.beginPath();
+    this.ctx.moveTo (centerX +  radius * Math.cos(0), centerY +  radius *  Math.sin(0));
 
     for (var i = 1; i <= numberOfSides;i += 1) {
-        cxt.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+        this.ctx.lineTo (centerX + radius * Math.cos(i * 2 * Math.PI / numberOfSides), centerY + radius * Math.sin(i * 2 * Math.PI / numberOfSides));
     }
 
-    this.cxt.strokeStyle = "#000000";
-    this.cxt.lineWidth = 1;
-    this.cxt.stroke();
+    //this.ctx.strokeStyle = "#000000";
+    this.ctx.lineWidth = 1;
+    this.ctx.stroke();
   }
 
   unsetShadow() {
