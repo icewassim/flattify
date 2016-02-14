@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   margin: 0;
   padding: 0;
@@ -12,6 +11,9 @@ body {
   height: 100%;
   width: 100%;
   background-color: #FBFBFB;
+}
+a {
+  text-decoration: none;
 }
 #flattify-logo {
   font-size: 30px;
@@ -36,7 +38,7 @@ header {
   border-bottom: 1px solid rgba(128, 128, 128, 0.22);
   height: 80px;
 }
-.download-button{
+.download-button {
   background-color: #58CE21;
   font-size: 20px;
   padding: 11px;
@@ -52,7 +54,7 @@ header {
 }
 .controls-container {
   float: right;
-  text-align:right;
+  text-align: right;
 }
 .shape {
   height: 70px;
@@ -62,22 +64,22 @@ header {
   cursor: pointer;
   margin-left: 20px;
 }
-
 #circular {
   border-radius: 50%;
 }
-
 .component-title {
+  margin-top: 50px;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
 }
-
+.component-title.first {
+  margin-top: 0px;
+}
 #long-shadow {
   background-image: url("/pics/shadow.jpg");
   background-size: 100%;
   border: 0px;
 }
-
 #no-shadow {
   background-image: url("/pics/no-shadow.png");
   background-color: transparent;

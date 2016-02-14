@@ -13,7 +13,7 @@
     <div id="flattify-logo">
       Flattify
     </div>
-    <button class="download-button">Download</button>
+    <a id="download-canvas" class="download-button" target="_blank">Download</a>
   </header>
   <div id="container">
     <canvas id="canvas" width="500" height="500"></canvas>
@@ -21,20 +21,14 @@
       <img id="source" src="/pics/twitter.png">
     </div>
     <div class="controls-container">
-      <div class="component-title">Shape</div>
+      <div class="component-title first">Shape</div>
       <hr>
       <button id="circular" class="shape"></button>
       <button id="rect" class="shape"></button>
-      <br>
-      <br>
-      <br>
       <div class="component-title">Color</div>
       <hr>
       <input type="color" id="colorPicker">
       <input type="text" value="#00B8FF" id="backgroundColorValue">
-      <br>
-      <br>
-      <br>
       <div class="component-title">Shadows</div>
       <hr>
       <button id="long-shadow" class="shape"></button>

@@ -33,4 +33,13 @@ window.onload = function() {
     canvasController.reloadCanvas();
   };
 
+  document.getElementById("download-canvas").onclick = function(){
+    console.log("hello");
+    this.href = canvasController.toDataURL();
+    // function dlCanvas() {
+    // var dt = canvas.toDataURL('image/png');
+    // this.href = dt;
+    // };
+  };
+
 };

@@ -163,6 +163,10 @@ class canvasController {
   shadowfy() {
     this.iconCanvas.shadowfy();
   }
+
+  toDataURL() {
+    return this.canvas.toDataURL('image/png');
+  }
 }
 
 export default canvasController;
