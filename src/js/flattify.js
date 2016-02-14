@@ -3,7 +3,7 @@ import CanvasController from './canvasController';
 window.onload = function() {
   'use strict';
 
-  let canvasController = new CanvasController("canvas","source");
+  let canvasController = new CanvasController("canvas", "source");
   canvasController.init();
 
   document.getElementById("rect").onclick = function() {
@@ -16,10 +16,21 @@ window.onload = function() {
     canvasController.reloadCanvas();
   };
 
-  document.getElementById('backgroundColor').onclick = function() {
-    let color = document.getElementById("backgroundColorValue").value;
-    canvasController.setBackgroundColor(color);
+  document.getElementById('colorPicker').onchange = function() {
+    let hexValue = document.getElementById("colorPicker").value;
+    document.getElementById("backgroundColorValue").value = hexValue;
+    canvasController.setBackgroundColor(hexValue);
     canvasController.reloadCanvas();
   };
 
+  document.getElementById("no-shadow").onclick = function() {
+    canvasController.unsetShadow();
+    canvasController.reloadCanvas();
   };
+
+  document.getElementById("long-shadow").onclick = function() {
+    canvasController.setShadow();
+    canvasController.reloadCanvas();
+  };
+
+};

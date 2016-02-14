@@ -15,7 +15,7 @@ class canvasController {
         a: 255
       },
       shape: "rect",
-      isShadowfied :true
+      isShadowfied: true
     };
 
     if (typeof(options) === "object") {
@@ -39,7 +39,7 @@ class canvasController {
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
-    if(this.options.isShadowfied === true)
+    if (this.options.isShadowfied === true)
       this.iconCanvas.shadowfy();
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
   }
@@ -56,7 +56,7 @@ class canvasController {
       this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     }
 
-    this.ctx.fillStyle = "rgba(" + 
+    this.ctx.fillStyle = "rgba(" +
       this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
       this.options.backgroundColor.b + "," +
@@ -66,16 +66,16 @@ class canvasController {
   }
 
   setBackgroundShape(shape) {
-    if(typeof(shape) === "string" && shape.length > 0)
+    if (typeof(shape) === "string" && shape.length > 0)
       this.options.shape = shape;
   }
 
 
   setBackgroundColor(color) {
-    let pixel = this.rgbaToPixel(color);
-    
+    let pixel = this.hexToRgb(color);
+
     console.log(pixel);
-    if(this.isValidPixel(pixel) === false) {
+    if (this.isValidPixel(pixel) === false) {
       console.error("invalid color");
       return false;
     }
@@ -92,13 +92,23 @@ class canvasController {
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
-    if(this.options.isShadowfied === true)
+    if (this.options.isShadowfied === true)
       this.iconCanvas.shadowfy();
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
   }
 
+  hexToRgb(hex) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+      a: 255
+    } : null;
+  }
+
   rgbaToPixel(rgbaColor) {
-    let rgbaTab = rgbaColor.replace("rgba(","").replace(")","").split(",");
+    let rgbaTab = rgbaColor.replace("rgba(", "").replace(")", "").split(",");
     return {
       r: parseInt(rgbaTab[0]),
       g: parseInt(rgbaTab[1]),
@@ -113,16 +123,41 @@ class canvasController {
       return false;
 
     for (let i in pixel) {
-      count ++;
-      if(typeof(pixel[i]) !== "number"  || pixel[i] > 255 || pixel[i] < 0)
+      count++;
+      if (typeof(pixel[i]) !== "number" || pixel[i] > 255 || pixel[i] < 0)
         return false;
     }
 
-    if(count != 4)
+    if (count != 4)
       return false;
 
     return true;
 
+  }
+
+  drawPolygone(numberOfSides) {
+    let size = 20,
+    Xcenter = 25,
+    Ycenter = 25;
+
+    this.cxt.beginPath();
+    this.cxt.moveTo (Xcenter +  size * Math.cos(0), Ycenter +  size *  Math.sin(0));
+
+    for (var i = 1; i <= numberOfSides;i += 1) {
+        cxt.lineTo (Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+    }
+
+    this.cxt.strokeStyle = "#000000";
+    this.cxt.lineWidth = 1;
+    this.cxt.stroke();
+  }
+
+  unsetShadow() {
+    this.options.isShadowfied = false;
+  }
+
+  setShadow() {
+    this.options.isShadowfied = true;
   }
 
   shadowfy() {
