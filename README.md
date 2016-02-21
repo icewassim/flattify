@@ -1,15 +1,15 @@
-# flattify
+# Flattify
 An easy to use Flat icons editor
 
-#installing
+#Installing
 npm install
 
-#testing
+#Testing
 gulp test
 
-#building
+#Building
 gulp build
 
-#running
+#Running
 gulp
 
