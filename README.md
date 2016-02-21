@@ -1,15 +1,12 @@
 # Flattify
-An easy to use Flat icons editor
+An easy icons editor build for flat icons fans
 
-#Installing
-npm install
+#Downloading
+.Git: git clone https://github.com/icewassim
+.Zip: Download Zip
 
-#Testing
-gulp test
+#Installation
+.NPM: npm install
 
 #Building
-gulp build
-
-#Running
-gulp
-
+.GULP: gulp build
