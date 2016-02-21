@@ -47,22 +47,29 @@ class canvasController {
   initBackground() {
     let centerX = this.canvas.width / 2,
       centerY = this.canvas.height / 2,
-      radius = Math.max(this.icon.height, this.icon.width) - 90;
-
-    this.ctx.beginPath();
-    if (this.options.shape === "rect") {
-      this.ctx.rect(0, 0, this.canvas.height, this.canvas.width, false);
-    } else if (this.options.shape === "circle") {
-      this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-    } else if(this.options.shape === "hexagone") {
-      this.drawPolygone(6,centerX, centerY, radius);
-    }
-
-    this.ctx.fillStyle = "rgba(" +
+      cornerRadius = 20,
+      radius = Math.max(this.icon.height, this.icon.width) - 90,
+      colorStyleStr = "rgba(" +
       this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
       this.options.backgroundColor.b + "," +
       "1)";
+
+    this.ctx.fillStyle = colorStyleStr;
+    this.ctx.strokeStyle = colorStyleStr;
+    this.ctx.beginPath();
+    if (this.options.shape === "rect") {
+      this.ctx.rect(0, 0, this.canvas.height, this.canvas.width, false);
+    } else if (this.options.shape === "round-rect") {
+      this.ctx.lineJoin = "round";
+      this.ctx.lineWidth = cornerRadius;
+      this.ctx.strokeRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
+      this.ctx.fillRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
+    } else if (this.options.shape === "circle") {
+      this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    } else if (this.options.shape === "hexagone") {
+      this.drawPolygone(6, centerX, centerY, radius);
+    }
 
     this.ctx.fill();
   }
@@ -136,12 +143,12 @@ class canvasController {
 
   }
 
-  drawPolygone(numberOfSides,centerX, centerY, radius) {
+  drawPolygone(numberOfSides, centerX, centerY, radius) {
     this.ctx.beginPath();
-    this.ctx.moveTo (centerX +  radius * Math.cos(0), centerY +  radius *  Math.sin(0));
+    this.ctx.moveTo(centerX + radius * Math.cos(0), centerY + radius * Math.sin(0));
 
-    for (var i = 1; i <= numberOfSides;i += 1) {
-        this.ctx.lineTo (centerX + radius * Math.cos(i * 2 * Math.PI / numberOfSides), centerY + radius * Math.sin(i * 2 * Math.PI / numberOfSides));
+    for (var i = 1; i <= numberOfSides; i += 1) {
+      this.ctx.lineTo(centerX + radius * Math.cos(i * 2 * Math.PI / numberOfSides), centerY + radius * Math.sin(i * 2 * Math.PI / numberOfSides));
     }
 
     //this.ctx.strokeStyle = "#000000";

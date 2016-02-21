@@ -85,6 +85,10 @@ header {
 #circular {
   border-radius: 50%;
 }
+#round-rect {
+  border-radius: 13%;
+}
+
 .component-title {
   margin-top: 50px;
   font-family: 'Open Sans', sans-serif;

@@ -16,6 +16,11 @@ window.onload = function() {
     canvasController.reloadCanvas();
   };
 
+  document.getElementById("round-rect").onclick = function() {
+    canvasController.setBackgroundShape("round-rect");
+    canvasController.reloadCanvas();
+  };
+
   document.getElementById('colorPicker').onchange = function() {
     let hexValue = document.getElementById("colorPicker").value;
     document.getElementById("backgroundColorValue").value = hexValue;
@@ -33,7 +38,7 @@ window.onload = function() {
     canvasController.reloadCanvas();
   };
 
-  document.getElementById("download-canvas").onclick = function(){
+  document.getElementById("download-canvas").onclick = function() {
     this.href = canvasController.toDataURL();
   };
 
