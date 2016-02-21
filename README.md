@@ -8,10 +8,10 @@ An easy icons editor for Flat Icons Fans.
 * [Npm](https://www.npmjs.org/) `npm install`
 
 #Building
-* [Gulp](http://gulpjs.com/): gulp build
+* [Gulp](http://gulpjs.com/): `gulp build`
 
-#Running Unit Tests
-* [Gulp](http://gulpjs.com/): gulp test
+#Running Tests
+* [Gulp](http://gulpjs.com/): `gulp test`
 
 #Contributing
 
