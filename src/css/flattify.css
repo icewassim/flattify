@@ -40,19 +40,36 @@ header {
   height: 80px;
 }
 .download-button {
-  background-color: #58CE21;
   font-size: 20px;
   padding: 11px;
   padding-left: 30px;
   cursor: pointer;
   padding-right: 30px;
-  color: white;
   font-family: sans-serif;
   float: right;
   border: none;
   margin-top: -38px;
   border-radius: 5px;
+  margin-left: 10px;
 }
+
+#download-canvas {
+  background-color: #58CE21;
+  color: white;
+}
+
+#upload-icon {
+  color: #0086CD;
+  border: 1px solid #0086CD;
+  background-color: transparent;
+}
+
+#upload-icon:hover {
+  color: white;
+  border: 1px solid #0086CD;
+  background-color: #0086CD;
+}
+
 .controls-container {
   float: right;
   text-align: right;
