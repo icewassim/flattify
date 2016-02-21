@@ -1,5 +1,7 @@
 # Flattify
-An easy icons editor build for Flat Icons Fans
+An easy icons editor build for Flat Icons Fans.
+
+![travis](https://api.travis-ci.org/icewassim/flattify.svg?branch=master)
 
 #Installation
 * Git: `git clone https://github.com/icewassim`
