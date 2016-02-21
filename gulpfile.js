@@ -4,6 +4,7 @@ var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   nodemon = require('gulp-nodemon'),
   babelify = require('babelify'),
+  uglify = require('gulp-uglify'),
   source = require('vinyl-source-stream'),
   fs = require('fs'),
   runSequence = require('run-sequence'),
@@ -36,6 +37,12 @@ gulp.task('js:lint', function() {
 
 gulp.task('build', function() {
   runSequence('clean', 'js:compile');
+});
+1
+gulp.task('compress', function() {
+  return gulp.src('build/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./release'));
 });
 
 gulp.task('js:compile', ['js:lint'], function() {
