@@ -76,7 +76,6 @@ class canvasController {
   setBackgroundColor(color) {
     let pixel = this.hexToRgb(color);
 
-    console.log(pixel);
     if (this.isValidPixel(pixel) === false) {
       console.error("invalid color");
       return false;
