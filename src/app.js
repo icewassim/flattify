@@ -6,7 +6,11 @@ const express = require('express'),
 var port = process.env.PORT || 3000;
 app.engine('html', consolidate.handlebars);
 app.use('/pics', express.static(__dirname + '/pics'));
-app.use('/js', express.static(__dirname + '/../build'));
+if(process.env.PROD) {
+  app.use('/js', express.static(__dirname + '/../release'));
+}else {
+  app.use('/js', express.static(__dirname + '/../build'));
+}
 app.use('/css', express.static(__dirname + '/css'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
@@ -19,7 +23,5 @@ app.listen(port, function(err) {
 });
 
 app.get('/', function(req, res) {
-  res.status(200).render('index', {
-    hello: "lol"
-  });
+  res.status(200).render('index');
 });
