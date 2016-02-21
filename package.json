@@ -4,6 +4,7 @@
   "description": "upload icons and convert them into flat ones",
   "main": "app.js",
   "scripts": {
+    "build": "gulp build",
     "test": "mocha --compilers js:babel-register"
   },
   "repository": {
