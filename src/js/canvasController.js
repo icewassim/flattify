@@ -7,7 +7,7 @@ class canvasController {
 
     //default options
     this.options = {
-      margin: 100,
+      margin: Math.max(this.icon.height,this.icon.width)/2,
       backgroundColor: {
         r: 0,
         g: 184,
@@ -29,8 +29,8 @@ class canvasController {
   init() {
     let imgData;
 
-    this.width = parseInt(this.icon.width);
-    this.height = parseInt(this.icon.height);
+    this.width = parseInt(this.icon.width) + this.options.margin;
+    this.height = parseInt(this.icon.height) + this.options.margin;
     this.ctx = this.canvas.getContext("2d");
     this.canvas.height = this.icon.height + this.options.margin;
     this.canvas.width = this.icon.width + this.options.margin;
@@ -48,7 +48,7 @@ class canvasController {
     let centerX = this.canvas.width / 2,
       centerY = this.canvas.height / 2,
       cornerRadius = 20,
-      radius = Math.max(this.icon.height, this.icon.width) - 90,
+      radius = Math.max(this.icon.height, this.icon.width) - this.icon.height/4,
       colorStyleStr = "rgba(" +
       this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
@@ -59,7 +59,7 @@ class canvasController {
     this.ctx.strokeStyle = colorStyleStr;
     this.ctx.beginPath();
     if (this.options.shape === "rect") {
-      this.ctx.rect(0, 0, this.canvas.height, this.canvas.width, false);
+      this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
     } else if (this.options.shape === "round-rect") {
       this.ctx.lineJoin = "round";
       this.ctx.lineWidth = cornerRadius;
@@ -70,7 +70,6 @@ class canvasController {
     } else if (this.options.shape === "hexagone") {
       this.drawPolygone(6, centerX, centerY, radius);
     }
-
     this.ctx.fill();
   }
 
@@ -79,7 +78,6 @@ class canvasController {
       this.options.shape = shape;
   }
 
-
   setBackgroundColor(color) {
     let pixel = this.hexToRgb(color);
 
@@ -87,8 +85,6 @@ class canvasController {
       console.error("invalid color");
       return false;
     }
-
-    console.log(pixel);
     this.options.backgroundColor = pixel;
   }
 
@@ -146,12 +142,9 @@ class canvasController {
   drawPolygone(numberOfSides, centerX, centerY, radius) {
     this.ctx.beginPath();
     this.ctx.moveTo(centerX + radius * Math.cos(0), centerY + radius * Math.sin(0));
-
     for (var i = 1; i <= numberOfSides; i += 1) {
       this.ctx.lineTo(centerX + radius * Math.cos(i * 2 * Math.PI / numberOfSides), centerY + radius * Math.sin(i * 2 * Math.PI / numberOfSides));
     }
-
-    //this.ctx.strokeStyle = "#000000";
     this.ctx.lineWidth = 1;
     this.ctx.stroke();
   }
