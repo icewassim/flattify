@@ -1,11 +1,11 @@
 # Flattify
-An easy icons editor build for Flat Icons Fans.
+An easy icons editor for Flat Icons Fans.
 
 ![travis](https://api.travis-ci.org/icewassim/flattify.svg?branch=master)
 
 #Installation
 * Git: `git clone https://github.com/icewassim`
-* [NPM](https://www.npmjs.org/) `npm install`
+* [Npm](https://www.npmjs.org/) `npm install`
 
 #Building
 * [Gulp](http://gulpjs.com/): gulp build
