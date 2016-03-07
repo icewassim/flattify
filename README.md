@@ -13,7 +13,7 @@ An easy icons editor for Flat Icons Fans.
 #Building
 * [Gulp](http://gulpjs.com/): `gulp build`
 
-#Running Tests
+#Testing
 * [Gulp](http://gulpjs.com/): `gulp test`
 
 #Contributing
