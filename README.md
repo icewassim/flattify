@@ -3,6 +3,8 @@ An easy icons editor for Flat Icons Fans.
 
 [![travis](https://api.travis-ci.org/icewassim/flattify.svg?branch=master)](https://travis-ci.org/icewassim/flattify)
 
+#Demo
+* [icewassim.github.io/flattify/](http://icewassim.github.io/flattify/)
 #Installation
 * [Git](https://git-scm.com/): `git clone https://github.com/icewassim`
 * [Npm](https://www.npmjs.org/): `npm install`
