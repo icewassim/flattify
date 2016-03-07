@@ -27,7 +27,7 @@ a {
   padding-right: 100px;
 }
 #canvas {
-  background-image: url("/pics/transparent.png");
+  background-image: url("/flattify/pics/transparent.png");
       background-size: 100%;
 }
 header {
@@ -98,12 +98,12 @@ header {
   margin-top: 0px;
 }
 #long-shadow {
-  background-image: url("/pics/shadow.jpg");
+  background-image: url("/flattify/pics/shadow.jpg");
   background-size: 100%;
   border: 0px;
 }
 #no-shadow {
-  background-image: url("/pics/no-shadow.png");
+  background-image: url("/flattify/pics/no-shadow.png");
   background-color: transparent;
   border-color: black;
   background-size: 100%;
