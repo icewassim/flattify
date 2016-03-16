@@ -88,12 +88,20 @@ class canvasController {
     this.options.backgroundColor = pixel;
   }
 
-  reloadCanvas() {
-    let imgData;
+  reloadCanvas(e) {
+    let imgData,
+        mouseXOffset = 0,
+        mouseYOffset = 0;
+
+    if(e) {
+      mouseXOffset = e.offsetX - this.icon.width/2;
+      mouseYOffset = e.offsetY - this.icon.height/2;
+    }
+
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.initBackground();
-    this.ctx.drawImage(this.icon, this.options.margin / 2, this.options.margin / 2);
-    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
+    this.ctx.drawImage(this.icon, this.options.margin / 2 + mouseXOffset, this.options.margin / 2 + mouseYOffset);
+    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
     if (this.options.isShadowfied === true)

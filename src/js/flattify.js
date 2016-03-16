@@ -11,6 +11,11 @@ window.onload = function() {
     canvasController.reloadCanvas();
   };
 
+  document.getElementById('canvas').onmousedown = function (e) {
+    console.log(e.offsetX,e.offsetY);
+    canvasController.reloadCanvas(e);
+  };
+
   document.getElementById("circular").onclick = function() {
     canvasController.setBackgroundShape("circle");
     canvasController.reloadCanvas();
