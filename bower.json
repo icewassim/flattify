@@ -1,0 +1,27 @@
+{
+  "name": "flattify",
+  "description": "upload icons and convert them into flat ones",
+  "main": "app.js",
+  "authors": [
+    "icewassim"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "flat",
+    "icons",
+    "shadow",
+    "material"
+  ],
+  "homepage": "https://github.com/icewassim/flattify",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mjolnic-bootstrap-colorpicker": "^2.3.0"
+  }
+}

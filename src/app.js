@@ -11,6 +11,7 @@ if(process.env.PROD) {
 }else {
   app.use('/js', express.static(__dirname + '/../build'));
 }
+app.use('/color-picker', express.static(__dirname + '/../bower_components/mjolnic-bootstrap-colorpicker/dist'));
 app.use('/css', express.static(__dirname + '/css'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');

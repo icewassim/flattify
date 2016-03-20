@@ -6,13 +6,17 @@ window.onload = function() {
   let canvasController = new CanvasController("canvas", "source");
   canvasController.init();
 
+  $('.demo2').colorpicker().on('changeColor.colorpicker', function(event){
+    canvasController.setBackgroundColor(event.color.toHex());
+    canvasController.reloadCanvas();
+  });
+
   document.getElementById("rect").onclick = function() {
     canvasController.setBackgroundShape("rect");
     canvasController.reloadCanvas();
   };
 
   document.getElementById('canvas').onmousedown = function (e) {
-    console.log(e.offsetX,e.offsetY);
     canvasController.reloadCanvas(e);
   };
 
@@ -28,7 +32,8 @@ window.onload = function() {
 
   document.getElementById('colorPicker').onchange = function() {
     let hexValue = document.getElementById("colorPicker").value;
-    document.getElementById("backgroundColorValue").value = hexValue;
+    //document.getElementById("backgroundColorValue").value = hexValue;
+    console.log(hexValue);
     canvasController.setBackgroundColor(hexValue);
     canvasController.reloadCanvas();
   };
