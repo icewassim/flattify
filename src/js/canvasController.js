@@ -89,15 +89,10 @@ class canvasController {
     this.options.backgroundColor = pixel;
   }
 
-  reloadCanvas(e, reloadBackground) {
+  reloadCanvas(reloadBackground) {
     let imgData,
         mouseXOffset = 0,
         mouseYOffset = 0;
-
-    if(e) {
-      mouseXOffset = e.offsetX - this.icon.width/2;
-      mouseYOffset = e.offsetY - this.icon.height/2;
-    }
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.initBackground();

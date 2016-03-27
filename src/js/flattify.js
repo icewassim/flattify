@@ -23,7 +23,7 @@ window.onload = function() {
         }).on('changeColor.colorpicker', function(event){
     //canvasController.reloadColors(event.color.toHex());
     canvasController.setBackgroundColor(event.color.toHex());
-    canvasController.reloadCanvas(null,true);
+    canvasController.reloadCanvas(true);
   });
 
   $('.demo3').colorpicker({
@@ -42,7 +42,7 @@ window.onload = function() {
             }
         }).on('changeColor.colorpicker', function(event){
     canvasController.reloadColors(event.color.toHex());
-    canvasController.reloadCanvas(null,false);
+    canvasController.reloadCanvas(false);
   });
 
   document.getElementById("rect").onclick = function() {
@@ -65,7 +65,7 @@ window.onload = function() {
                         b:p[2],
                         a:1
                     });
-    console.log(coord + "<br>" + hex);
+    $('.demo3').colorpicker("show");
 };
 
 function findPos(obj) {

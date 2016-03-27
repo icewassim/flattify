@@ -15,6 +15,10 @@ body {
 a {
   text-decoration: none;
 }
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
 #flattify-logo {
   font-size: 30px;
   font-family: sans-serif;
@@ -135,6 +139,9 @@ header {
   margin-left: 10px;
   margin-top: 200px;
   left: 30%;
+}
+#upload-icon-header:hover{
+  text-decoration: none;
 }
 #choose-from-list {
   background-color: white;
