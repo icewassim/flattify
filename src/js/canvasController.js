@@ -14,6 +14,7 @@ class canvasController {
         b: 255,
         a: 255
       },
+      selectedColor :null,
       shape: "rect",
       isShadowfied: true
     };
@@ -88,7 +89,7 @@ class canvasController {
     this.options.backgroundColor = pixel;
   }
 
-  reloadCanvas(e) {
+  reloadCanvas(e, reloadBackground) {
     let imgData,
         mouseXOffset = 0,
         mouseYOffset = 0;
@@ -101,8 +102,10 @@ class canvasController {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.initBackground();
     this.ctx.drawImage(this.icon, this.options.margin / 2 + mouseXOffset, this.options.margin / 2 + mouseYOffset);
-    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
-    this.iconCanvas = new ImgCanvas(imgData);
+      imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
+    if(reloadBackground === true) {
+      this.iconCanvas = new ImgCanvas(imgData);
+    }
     this.iconCanvas.init(this.options.backgroundColor);
     if (this.options.isShadowfied === true)
       this.iconCanvas.shadowfy();
@@ -146,6 +149,27 @@ class canvasController {
     return true;
 
   }
+
+  selectColor(color) {
+    if(this.isValidPixel(color) === false ) {
+      console.error("Invalid color !! ",c);
+      return false;
+    }
+    this.options.selectedColor = color;
+    console.log(color);
+  }
+
+ reloadColors(color) {
+   let pixel = this.hexToRgb(color);
+
+   if (this.isValidPixel(pixel) === false) {
+     console.error("invalid color");
+     return false;
+   }
+   this.iconCanvas.reloadColors(this.options.selectedColor,pixel);
+   console.log("success");
+
+ }
 
   drawPolygone(numberOfSides, centerX, centerY, radius) {
     this.ctx.beginPath();

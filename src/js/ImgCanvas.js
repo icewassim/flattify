@@ -12,7 +12,12 @@ class ImgCanvas {
   }
 
   init(background) {
-    this.background = background ||  {r:0, g:0,b:0 ,a:0};
+    this.background = background || {
+      r: 0,
+      g: 0,
+      b: 0,
+      a: 0
+    };
     this.imgDataToMatrix();
     this.flagBackgroundPixels();
   }
@@ -36,7 +41,7 @@ class ImgCanvas {
   }
 
   imgDataToMatrix() {
-    for (let i = 0; i < this.height ; i++) {
+    for (let i = 0; i < this.height; i++) {
       let lines = [];
       for (let j = 0; j < this.width * RGBA_COUNT; j = j + RGBA_COUNT) {
         lines.push(this.getPixelFromImgData(i, j));
@@ -46,9 +51,9 @@ class ImgCanvas {
   }
 
   setShadowPixel(linesIndex, columnsIndex, shadowOffset) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = this.background.r -50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = this.background.g -50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = this.background.b -50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = this.background.r - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = this.background.g - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = this.background.b - 50;
     this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = this.background.a;
   }
 
@@ -66,7 +71,7 @@ class ImgCanvas {
       for (let j = 0; j < this.imgMatrix[i].length; j++) {
         //if (this.imgMatrix[i][j].isBackground !== true && this.imgMatrix[i][j].a !== 0) {
         if (this.imgMatrix[i][j].isBackground === false) {
-        //if(this.imgMatrix[i][j].r == 255 && this.imgMatrix[i][j].g == 255 && this.imgMatrix[i][j].b == 255){
+          //if(this.imgMatrix[i][j].r == 255 && this.imgMatrix[i][j].g == 255 && this.imgMatrix[i][j].b == 255){
           for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix[i + shadowOffset].length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j + shadowOffset].isBackground === true) {
               this.setShadowPixel(i, j, shadowOffset);
@@ -88,22 +93,46 @@ class ImgCanvas {
   flagBackgroundPixels() {
     for (let i = 0; i < this.imgMatrix.length; i++) {
       for (let j = 0; j < this.imgMatrix[i].length; j++) {
-        if(this.isPixelEqual(this.imgMatrix[i][j],this.background) === true) {
-            this.imgMatrix[i][j].isBackground = true;
-        }else if(this.imgMatrix[i][j].a === 255){
-            this.imgMatrix[i][j].isBackground = false;
+        if (this.isPixelEqual(this.imgMatrix[i][j], this.background) === true) {
+          this.imgMatrix[i][j].isBackground = true;
+        } else if (this.imgMatrix[i][j].a === 255) {
+          this.imgMatrix[i][j].isBackground = false;
         }
       }
     }
   }
 
-  isPixelEqual(pixel1,pixel2){
-      return (
-        pixel1.r == pixel2.r &&
-        pixel1.g == pixel2.g &&
-        pixel1.b == pixel2.b &&
-        pixel1.a == pixel2.a
-      );
+  reloadColors(selectedPixel, newPixel) {
+    console.log(selectedPixel);
+    console.log(newPixel);
+    for (let i = 0; i < this.imgMatrix.length; i++) {
+      for (let j = 0; j < this.imgMatrix[i].length; j++) {
+        if (this.isAlmostEqual(this.imgMatrix[i][j],selectedPixel,10)) {
+          this.imgMatrix[i][j].r = newPixel.r;
+          this.imgMatrix[i][j].g = newPixel.g;
+          this.imgMatrix[i][j].b = newPixel.b;
+          this.imgMatrix[i][j].a = newPixel.a;
+        }
+      }
+    }
+  }
+
+  isAlmostEqual(pixel1, pixel2, tolerance) {
+    if (Math.abs(pixel1.r - pixel2.r) < tolerance &&
+      Math.abs(pixel1.g - pixel2.g) < tolerance &&
+      Math.abs(pixel1.b - pixel2.b) < tolerance) {
+      return true;
+    }
+    return false;
+  }
+
+  isPixelEqual(pixel1, pixel2) {
+    return (
+      pixel1.r == pixel2.r &&
+      pixel1.g == pixel2.g &&
+      pixel1.b == pixel2.b &&
+      pixel1.a == pixel2.a
+    );
   }
 }
 export default ImgCanvas;
