@@ -9,6 +9,7 @@ An easy icons editor for Flat Icons Fans.
 #Installation
 * [Git](https://git-scm.com/): `git clone https://github.com/icewassim`
 * [Npm](https://www.npmjs.org/): `npm install`
+* [Bower](http://bower.io/): `bower install`
 
 #Building
 * [Gulp](http://gulpjs.com/): `gulp build`
