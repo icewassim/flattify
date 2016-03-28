@@ -111,12 +111,12 @@ function rgbToHex(r, g, b) {
 
   document.getElementById("no-shadow").onclick = function() {
     canvasController.unsetShadow();
-    canvasController.reloadCanvas();
+    canvasController.reloadCanvas(true);
   };
 
   document.getElementById("long-shadow").onclick = function() {
     canvasController.setShadow();
-    canvasController.reloadCanvas();
+    canvasController.reloadCanvas(true);
   };
 
   document.getElementById("download-canvas").onclick = function() {

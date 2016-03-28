@@ -248,3 +248,7 @@ header {
 .colorpicker-2x .colorpicker-color div{
     height: 30px;
 }
+.shadow-container {
+  position: absolute;
+  right: 40px;
+}
