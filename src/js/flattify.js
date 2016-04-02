@@ -2,9 +2,19 @@ import CanvasController from './canvasController';
 
 window.onload = function() {
   'use strict';
-
+  // background = #6e8994
   let canvasController = new CanvasController("canvas", "source");
   canvasController.init();
+  $('#toggle-one').bootstrapToggle();
+  $('#toggle-one').change(function() {
+      if( $(this).prop('checked') === true) {
+        canvasController.setShadow(1);
+        canvasController.reloadCanvas(true);
+      } else {
+        canvasController.setShadow(0);
+        canvasController.reloadCanvas(true);
+      }
+    });
 
   $('.demo2').colorpicker({
             customClass: 'colorpicker-2x',
@@ -47,7 +57,7 @@ window.onload = function() {
 
   document.getElementById("rect").onclick = function() {
     canvasController.setBackgroundShape("rect");
-    canvasController.reloadCanvas();
+    canvasController.reloadCanvas(true);
   };
 
 
@@ -93,12 +103,12 @@ function rgbToHex(r, g, b) {
 */
   document.getElementById("circular").onclick = function() {
     canvasController.setBackgroundShape("circle");
-    canvasController.reloadCanvas();
+    canvasController.reloadCanvas(true);
   };
 
   document.getElementById("round-rect").onclick = function() {
     canvasController.setBackgroundShape("round-rect");
-    canvasController.reloadCanvas();
+    canvasController.reloadCanvas(true);
   };
 
   document.getElementById('colorPicker').onchange = function() {
@@ -109,13 +119,13 @@ function rgbToHex(r, g, b) {
     canvasController.reloadCanvas();
   };
 
-  document.getElementById("no-shadow").onclick = function() {
-    canvasController.unsetShadow();
+  document.getElementById("long-shadow").onclick = function() {
+    canvasController.setShadow(1);
     canvasController.reloadCanvas(true);
   };
 
-  document.getElementById("long-shadow").onclick = function() {
-    canvasController.setShadow();
+  document.getElementById("half-shadow").onclick = function() {
+    canvasController.setShadow(2);
     canvasController.reloadCanvas(true);
   };
 

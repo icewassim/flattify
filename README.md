@@ -1,5 +1,5 @@
 # Flattify
-An easy icons editor for Flat Icons Fans.
+An easy to use icons editor for Flat Icons Fans.
 
 [![travis](https://api.travis-ci.org/icewassim/flattify.svg?branch=master)](https://travis-ci.org/icewassim/flattify)
 

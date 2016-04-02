@@ -82,10 +82,17 @@ class ImgCanvas {
     }
   }
 
-  halfMaterial() {
+  halfMaterial(margin) {
+    var contrast = -20;
+    var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+
     for (let i = 0; i < this.imgMatrix.length; i++) {
-      for (let j = this.imgMatrix[i].length / 2; j < this.imgMatrix[i].length; j++) {
-        this.imgMatrix[i][j].g = this.imgMatrix[i][j].g - 20;
+        //this.imgMatrix[i][j].g = this.imgMatrix[i][j].g - 20;
+      for (let j = this.imgMatrix[i].length / 2 - margin/2 - 5 ; j < this.imgMatrix[i].length; j++) {
+
+        this.imgMatrix[i][j].r = factor * (this.imgMatrix[i][j].r - 128) + 128;
+        this.imgMatrix[i][j].g = factor * (this.imgMatrix[i][j].g - 128) + 128;
+        this.imgMatrix[i][j].b = factor * (this.imgMatrix[i][j].b - 128) + 128;
       }
     }
   }

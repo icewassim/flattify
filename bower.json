@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "mjolnic-bootstrap-colorpicker": "^2.3.0"
+    "mjolnic-bootstrap-colorpicker": "^2.3.0",
+    "bootstrap-toggle": "^2.2.2"
   }
 }

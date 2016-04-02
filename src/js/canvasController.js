@@ -16,7 +16,7 @@ class canvasController {
       },
       selectedColor :null,
       shape: "rect",
-      isShadowfied: true
+      shadow: 1
     };
 
     if (typeof(options) === "object") {
@@ -40,8 +40,17 @@ class canvasController {
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
-    if (this.options.isShadowfied === true)
-      this.iconCanvas.shadowfy();
+    switch (this.options.shadow) {
+      case 1:
+        this.iconCanvas.shadowfy();
+        break;
+      case 2:
+          this.iconCanvas.halfMaterial(this.options.margin);
+          break;
+      case 0:
+          break;
+      default:
+    }
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
   }
 
@@ -62,11 +71,13 @@ class canvasController {
     if (this.options.shape === "rect") {
       this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
     } else if (this.options.shape === "round-rect") {
+      console.log("roundiii");
       this.ctx.lineJoin = "round";
       this.ctx.lineWidth = cornerRadius;
       this.ctx.strokeRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
       this.ctx.fillRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
     } else if (this.options.shape === "circle") {
+      console.log("circle");
       this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     } else if (this.options.shape === "hexagone") {
       this.drawPolygone(6, centerX, centerY, radius);
@@ -75,6 +86,7 @@ class canvasController {
   }
 
   setBackgroundShape(shape) {
+    console.log(shape);
     if (typeof(shape) === "string" && shape.length > 0)
       this.options.shape = shape;
   }
@@ -102,8 +114,17 @@ class canvasController {
       this.iconCanvas = new ImgCanvas(imgData);
     }
     this.iconCanvas.init(this.options.backgroundColor);
-    if (this.options.isShadowfied === true)
-      this.iconCanvas.shadowfy();
+    switch (this.options.shadow) {
+      case 1:
+        this.iconCanvas.shadowfy();
+        break;
+      case 2:
+          this.iconCanvas.halfMaterial(this.options.margin);
+          break;
+      case 0:
+          break;
+      default:
+    }
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
   }
 
@@ -176,16 +197,8 @@ class canvasController {
     this.ctx.stroke();
   }
 
-  unsetShadow() {
-    this.options.isShadowfied = false;
-  }
-
-  setShadow() {
-    this.options.isShadowfied = true;
-  }
-
-  shadowfy() {
-    this.iconCanvas.shadowfy();
+  setShadow(shadowType) {
+    this.options.shadow = shadowType;
   }
 
   toDataURL() {
