@@ -15,7 +15,7 @@ class canvasController {
         a: 255
       },
       selectedColor :null,
-      shape: "rect",
+      shape: "circle",
       shadow: 1
     };
 
@@ -71,13 +71,11 @@ class canvasController {
     if (this.options.shape === "rect") {
       this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
     } else if (this.options.shape === "round-rect") {
-      console.log("roundiii");
       this.ctx.lineJoin = "round";
       this.ctx.lineWidth = cornerRadius;
       this.ctx.strokeRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
       this.ctx.fillRect(0 + (cornerRadius / 2), 0 + (cornerRadius / 2), this.canvas.width - cornerRadius, this.canvas.height - cornerRadius);
     } else if (this.options.shape === "circle") {
-      console.log("circle");
       this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     } else if (this.options.shape === "hexagone") {
       this.drawPolygone(6, centerX, centerY, radius);
@@ -86,7 +84,6 @@ class canvasController {
   }
 
   setBackgroundShape(shape) {
-    console.log(shape);
     if (typeof(shape) === "string" && shape.length > 0)
       this.options.shape = shape;
   }
@@ -172,7 +169,6 @@ class canvasController {
       return false;
     }
     this.options.selectedColor = color;
-    console.log(color);
   }
 
  reloadColors(color) {
@@ -183,8 +179,6 @@ class canvasController {
      return false;
    }
    this.iconCanvas.reloadColors(this.options.selectedColor,pixel);
-   console.log("success");
-
  }
 
   drawPolygone(numberOfSides, centerX, centerY, radius) {

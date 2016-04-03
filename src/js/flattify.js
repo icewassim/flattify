@@ -5,55 +5,7 @@ window.onload = function() {
   // background = #6e8994
   let canvasController = new CanvasController("canvas", "source");
   canvasController.init();
-  $('#toggle-one').bootstrapToggle();
-  $('#toggle-one').change(function() {
-      if( $(this).prop('checked') === true) {
-        canvasController.setShadow(1);
-        canvasController.reloadCanvas(true);
-      } else {
-        canvasController.setShadow(0);
-        canvasController.reloadCanvas(true);
-      }
-    });
-
-  $('.demo2').colorpicker({
-            customClass: 'colorpicker-2x',
-            sliders: {
-                saturation: {
-                    maxLeft: 200,
-                    maxTop: 200
-                },
-                hue: {
-                    maxTop: 200
-                },
-                alpha: {
-                    maxTop: 200
-                }
-            }
-        }).on('changeColor.colorpicker', function(event){
-    //canvasController.reloadColors(event.color.toHex());
-    canvasController.setBackgroundColor(event.color.toHex());
-    canvasController.reloadCanvas(true);
-  });
-
-  $('.demo3').colorpicker({
-            customClass: 'colorpicker-2x',
-            sliders: {
-                saturation: {
-                    maxLeft: 200,
-                    maxTop: 200
-                },
-                hue: {
-                    maxTop: 200
-                },
-                alpha: {
-                    maxTop: 200
-                }
-            }
-        }).on('changeColor.colorpicker', function(event){
-    canvasController.reloadColors(event.color.toHex());
-    canvasController.reloadCanvas(false);
-  });
+  widgetsInit(canvasController);
 
   document.getElementById("rect").onclick = function() {
     canvasController.setBackgroundShape("rect");
@@ -70,37 +22,41 @@ window.onload = function() {
     var p = c.getImageData(x, y, 1, 1).data;
     var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
     canvasController.selectColor({
-                        r:p[0],
-                        g:p[1],
-                        b:p[2],
-                        a:1
-                    });
+      r: p[0],
+      g: p[1],
+      b: p[2],
+      a: 1
+    });
     $('.demo3').colorpicker("show");
-};
+  };
 
-function findPos(obj) {
-    var curleft = 0, curtop = 0;
+  function findPos(obj) {
+    var curleft = 0,
+      curtop = 0;
     if (obj.offsetParent) {
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-            obj = obj.offsetParent;
-        } while (obj);
-        return { x: curleft, y: curtop };
+      do {
+        curleft += obj.offsetLeft;
+        curtop += obj.offsetTop;
+        obj = obj.offsetParent;
+      } while (obj);
+      return {
+        x: curleft,
+        y: curtop
+      };
     }
     return undefined;
-}
+  }
 
-function rgbToHex(r, g, b) {
+  function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
-        throw "Invalid color component";
+      throw "Invalid color component";
     return ((r << 16) | (g << 8) | b).toString(16);
-}
-/*
-  document.getElementById('canvas').onmousedown = function (e) {
-    canvasController.reloadCanvas(e);
-  };
-*/
+  }
+  /*
+    document.getElementById('canvas').onmousedown = function (e) {
+      canvasController.reloadCanvas(e);
+    };
+  */
   document.getElementById("circular").onclick = function() {
     canvasController.setBackgroundShape("circle");
     canvasController.reloadCanvas(true);
@@ -114,7 +70,6 @@ function rgbToHex(r, g, b) {
   document.getElementById('colorPicker').onchange = function() {
     let hexValue = document.getElementById("colorPicker").value;
     //document.getElementById("backgroundColorValue").value = hexValue;
-    console.log(hexValue);
     canvasController.setBackgroundColor(hexValue);
     canvasController.reloadCanvas();
   };
@@ -134,3 +89,59 @@ function rgbToHex(r, g, b) {
   };
 
 };
+
+function widgetsInit(canvasController) {
+  $('#toggle-one').bootstrapToggle().change(function() {
+    if ($(this).prop('checked') === true) {
+      canvasController.setShadow(1);
+      canvasController.reloadCanvas(true);
+    } else {
+      canvasController.setShadow(0);
+      canvasController.reloadCanvas(true);
+    }
+  });
+
+  $("#padding-slider").slider().on("slide", function(slideEvt) {
+  	$("#ex6SliderVal").text("Padding :"+slideEvt.value);
+  });
+
+
+  $('.demo2').colorpicker({
+    customClass: 'colorpicker-2x',
+    sliders: {
+      saturation: {
+        maxLeft: 200,
+        maxTop: 200
+      },
+      hue: {
+        maxTop: 200
+      },
+      alpha: {
+        maxTop: 200
+      }
+    }
+  }).on('changeColor.colorpicker', function(event) {
+    canvasController.setBackgroundColor(event.color.toHex());
+    canvasController.reloadCanvas(true);
+  });
+
+  $('.demo3').colorpicker({
+    customClass: 'colorpicker-2x',
+    sliders: {
+      saturation: {
+        maxLeft: 200,
+        maxTop: 200
+      },
+      hue: {
+        maxTop: 200
+      },
+      alpha: {
+        maxTop: 200
+      }
+    }
+  }).on('changeColor.colorpicker', function(event) {
+    canvasController.reloadColors(event.color.toHex());
+    canvasController.reloadCanvas(false);
+  });
+
+}

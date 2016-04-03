@@ -11,11 +11,15 @@ if(process.env.PROD) {
 }else {
   app.use('/js', express.static(__dirname + '/../build'));
 }
+
+app.use('/seiyria-bootstrap-slider', express.static(__dirname + '/../bower_components/seiyria-bootstrap-slider/dist'));
+app.use('/color-picker', express.static(__dirname + '/../bower_components/mjolnic-bootstrap-colorpicker/dist'));
 app.use('/color-picker', express.static(__dirname + '/../bower_components/mjolnic-bootstrap-colorpicker/dist'));
 app.use('/bootstrap', express.static(__dirname + '/../bower_components/bootstrap/dist'));
 app.use('/jquery', express.static(__dirname + '/../bower_components/jquery/dist'));
 app.use('/bootstrap-toggle', express.static(__dirname + '/../bower_components/bootstrap-toggle'));
 app.use('/css', express.static(__dirname + '/css'));
+
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 

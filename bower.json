@@ -23,6 +23,9 @@
   ],
   "dependencies": {
     "mjolnic-bootstrap-colorpicker": "^2.3.0",
-    "bootstrap-toggle": "^2.2.2"
+    "bootstrap-toggle": "^2.2.2",
+    "bower": "*",
+    "install": "^1.0.4",
+    "seiyria-bootstrap-slider": "^6.1.6"
   }
 }
