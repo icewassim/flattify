@@ -30,7 +30,7 @@ a:hover, a:visited, a:link, a:active {
   padding-right: 100px;
 }
 #canvas {
-  background-image: url("/pics/transparent.png");
+  background-image: url("/flattify/pics/transparent.png");
   background-size: 100%;
   margin-left: 30%;
   cursor: crosshair;
@@ -98,7 +98,7 @@ header {
   margin-top: 0px;
 }
 #long-shadow {
-  background-image: url("/pics/shdowfy.png");
+  background-image: url("/flattify/pics/shdowfy.png");
   background-size: 100%;
   border: 0px;
   border: none;
@@ -106,7 +106,7 @@ header {
 }
 
 #half-shadow {
-  background-image: url("/pics/half-shadow.png");
+  background-image: url("/flattify/pics/half-shadow.png");
   background-size: 100%;
   border: 0px;
   border: none;
@@ -115,7 +115,7 @@ header {
 
 
 #no-shadow {
-  background-image: url("/pics/no-shadow.png");
+  background-image: url("/flattify/pics/no-shadow.png");
   background-color: transparent;
   border-color: black;
   background-size: 100%;
