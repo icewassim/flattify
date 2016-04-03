@@ -15,6 +15,9 @@ body {
 a {
   text-decoration: none;
 }
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
 #flattify-logo {
   font-size: 30px;
   font-family: sans-serif;
@@ -27,8 +30,10 @@ a {
   padding-right: 100px;
 }
 #canvas {
-  background-image: url("/flattify/pics/transparent.png");
-      background-size: 100%;
+  background-image: url("/pics/transparent.png");
+  background-size: 100%;
+  margin-left: 30%;
+  cursor: crosshair;
 }
 header {
   background-color: white;
@@ -52,24 +57,20 @@ header {
   border-radius: 5px;
   margin-left: 10px;
 }
-
 #download-canvas {
   background-color: #58CE21;
   color: white;
 }
-
 #upload-icon {
   color: #0086CD;
   border: 1px solid #0086CD;
   background-color: transparent;
 }
-
 #upload-icon:hover {
   color: white;
   border: 1px solid #0086CD;
   background-color: #0086CD;
 }
-
 .controls-container {
   float: right;
   text-align: right;
@@ -78,7 +79,7 @@ header {
   height: 70px;
   width: 70px;
   border: 4px solid #0086CD;
-  background-color: #00B8FF;
+  background: rgba(0, 184, 255, 0.24);
   cursor: pointer;
   margin-left: 20px;
 }
@@ -88,7 +89,6 @@ header {
 #round-rect {
   border-radius: 13%;
 }
-
 .component-title {
   margin-top: 50px;
   font-family: 'Open Sans', sans-serif;
@@ -98,13 +98,176 @@ header {
   margin-top: 0px;
 }
 #long-shadow {
-  background-image: url("/flattify/pics/shadow.jpg");
+  background-image: url("/pics/shdowfy.png");
   background-size: 100%;
   border: 0px;
+  border: none;
+  border-radius: 10px;
 }
+
+#half-shadow {
+  background-image: url("/pics/half-shadow.png");
+  background-size: 100%;
+  border: 0px;
+  border: none;
+  border-radius: 10px;
+}
+
+
 #no-shadow {
-  background-image: url("/flattify/pics/no-shadow.png");
+  background-image: url("/pics/no-shadow.png");
   background-color: transparent;
   border-color: black;
   background-size: 100%;
+}
+#container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 400px;
+}
+#header-title {
+  color: white;
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  text-align: center;
+  width: 100%;
+  margin-top: 100px;
+}
+#upload-icon-header {
+  color: white;
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  margin-left: 30%;
+  border: 2px solid white;
+  padding: 11px;
+  padding-left: 30px;
+  cursor: pointer;
+  padding-right: 30px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 200px;
+  left: 30%;
+}
+#upload-icon-header:hover {
+  text-decoration: none;
+}
+#choose-from-list {
+  background-color: white;
+  color: #227DB7;
+  position: absolute;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  margin-left: 30%;
+  border: 2px solid white;
+  padding: 11px;
+  padding-left: 30px;
+  cursor: pointer;
+  padding-right: 30px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 200px;
+  left: 48%;
+}
+.nav-menu-balls {
+  position: absolute;
+  top: -39px;
+  left: 10px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #0086CD;
+}
+.nav-menu-balls-bottom {
+  top: 181px;
+  left: 10px;
+}
+#nav-menu {
+  width: 110px;
+  height: 231px;
+  margin-bottom: 200px;
+  position: absolute;
+  background-color: #0086CD;
+  top: 10px;
+  left: 10px;
+}
+.nav-elment {
+  margin-left: 40px;
+  margin-bottom: 20px;
+  height: 30px;
+}
+.nav-menu-title-1, .nav-menu-title-2, .nav-menu-title-3, .nav-menu-title-4, .nav-menu-title-5 {
+  position: absolute;
+  left: 125px;
+  font-family: 'Open Sans', sans-serif;
+  color: #0086CD;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.nav-menu-title-5 {
+  top: 212px;
+}
+.nav-menu-title-2 {
+  top: 68px;
+}
+.nav-menu-title-1 {
+  top: 113px;
+}
+.nav-menu-title-4 {
+  top: 162px;
+}
+.selected {
+  border-bottom: 2px solid #48B5EF;
+}
+.color-container {
+  float: right;
+  text-align: right;
+  margin-top: -50px;
+}
+.color-picker-label {
+  position: initial;
+  text-transform: none;
+  font-size: 23px;
+  margin-bottom: 50px;
+}
+.input-group {
+  width: 210px;
+  margin-top: 10px;
+  float: right;
+  margin-bottom: 30px;
+}
+.colorpicker-2x .colorpicker-saturation {
+  width: 200px;
+  height: 200px;
+}
+.colorpicker-2x .colorpicker-hue, .colorpicker-2x .colorpicker-alpha {
+  width: 30px;
+  height: 200px;
+}
+.colorpicker-2x .colorpicker-color, .colorpicker-2x .colorpicker-color div {
+  height: 30px;
+}
+.shadow-container {
+  position: absolute;
+  right: 40px;
+}
+.color-picker-label {
+  margin-right: 15px;
+}
+.tools-container {
+  background-color: rgba(241, 241, 241, 0.28);
+  padding: 20px;
+  width: 30%;
+  margin-right: -50px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.tools-container hr {
+  width: 100%;
+}
+.shapes-container {
+  float: right;
+  margin-bottom: 50px;
 }
