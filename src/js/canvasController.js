@@ -16,6 +16,7 @@ class canvasController {
       },
       selectedColor :null,
       shape: "circle",
+      radius: null,
       shadow: 1
     };
 
@@ -58,7 +59,7 @@ class canvasController {
     let centerX = this.canvas.width / 2,
       centerY = this.canvas.height / 2,
       cornerRadius = 20,
-      radius = Math.max(this.icon.height, this.icon.width) - this.icon.height/4,
+      radius = this.options.radius || Math.max(this.icon.height, this.icon.width) - this.icon.height/4,
       colorStyleStr = "rgba(" +
       this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
@@ -69,6 +70,7 @@ class canvasController {
     this.ctx.strokeStyle = colorStyleStr;
     this.ctx.beginPath();
     if (this.options.shape === "rect") {
+      console.log(this.options.margin);
       this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
     } else if (this.options.shape === "round-rect") {
       this.ctx.lineJoin = "round";
@@ -83,6 +85,13 @@ class canvasController {
     this.ctx.fill();
   }
 
+  setMargin(margin) {
+      this.options.margin = margin;
+  }
+
+  setRadius(radius) {
+    this.options.radius = radius;
+  }
   setBackgroundShape(shape) {
     if (typeof(shape) === "string" && shape.length > 0)
       this.options.shape = shape;
@@ -104,6 +113,8 @@ class canvasController {
         mouseYOffset = 0;
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.canvas.height = this.icon.height + this.options.margin;
+    this.canvas.width = this.icon.width + this.options.margin;
     this.initBackground();
     this.ctx.drawImage(this.icon, this.options.margin / 2 + mouseXOffset, this.options.margin / 2 + mouseYOffset);
       imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);

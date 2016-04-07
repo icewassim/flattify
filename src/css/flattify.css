@@ -30,10 +30,9 @@ a:hover, a:visited, a:link, a:active {
   padding-right: 100px;
 }
 #canvas {
-  background-image: url("/pics/transparent.png");
-  background-size: 100%;
-  margin-left: 30%;
-  cursor: crosshair;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 header {
   background-color: white;
@@ -270,4 +269,16 @@ header {
 .shapes-container {
   float: right;
   margin-bottom: 50px;
+}
+
+.canvas-container {
+  background-image: url("/pics/transparent.png");
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  background-size: 100%;
+  width: 600px;
+  height: 450px;
+  text-align: center;
+  position: absolute;
+  left: 20%;
+  top: -24px;
 }

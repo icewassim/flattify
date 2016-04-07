@@ -102,7 +102,9 @@ function widgetsInit(canvasController) {
   });
 
   $("#padding-slider").slider().on("slide", function(slideEvt) {
-  	$("#ex6SliderVal").text("Padding :"+slideEvt.value);
+    canvasController.setMargin(slideEvt.value);
+    canvasController.setRadius(slideEvt.value);
+    canvasController.reloadCanvas(true);
   });
 
 
