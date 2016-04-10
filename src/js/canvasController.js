@@ -86,6 +86,8 @@ class canvasController {
   }
 
   setMargin(margin) {
+      this.options.radius = margin - this.icon.height/4;
+
       this.options.margin = margin;
   }
 

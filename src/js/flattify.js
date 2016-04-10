@@ -12,7 +12,6 @@ window.onload = function() {
     canvasController.reloadCanvas(true);
   };
 
-
   document.getElementById("canvas").onclick = function(e) {
     var pos = findPos(this);
     var x = e.pageX - pos.x;
@@ -103,7 +102,6 @@ function widgetsInit(canvasController) {
 
   $("#padding-slider").slider().on("slide", function(slideEvt) {
     canvasController.setMargin(slideEvt.value);
-    canvasController.setRadius(slideEvt.value);
     canvasController.reloadCanvas(true);
   });
 

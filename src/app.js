@@ -19,7 +19,6 @@ app.use('/bootstrap', express.static(__dirname + '/../bower_components/bootstrap
 app.use('/jquery', express.static(__dirname + '/../bower_components/jquery/dist'));
 app.use('/bootstrap-toggle', express.static(__dirname + '/../bower_components/bootstrap-toggle'));
 app.use('/css', express.static(__dirname + '/css'));
-
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
