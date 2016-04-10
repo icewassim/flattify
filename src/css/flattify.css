@@ -56,10 +56,7 @@ header {
   border-radius: 5px;
   margin-left: 10px;
 }
-#download-canvas {
-  background-color: #58CE21;
-  color: white;
-}
+
 #upload-icon {
   color: #0086CD;
   border: 1px solid #0086CD;

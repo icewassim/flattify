@@ -87,8 +87,11 @@ class canvasController {
 
   setMargin(margin) {
       this.options.radius = margin - this.icon.height/4;
-
       this.options.margin = margin;
+  }
+
+  getRadius() {
+    return this.options.radius ||  Math.max(this.icon.height, this.icon.width) - this.icon.height/4;
   }
 
   setRadius(radius) {

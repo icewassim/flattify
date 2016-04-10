@@ -84,6 +84,11 @@ window.onload = function() {
   };
 
   document.getElementById("download-canvas").onclick = function() {
+    console.log("dsqds");
+    this.href = canvasController.toDataURL();
+  };
+
+  document.getElementById("download-canvas-icon").onclick = function() {
     this.href = canvasController.toDataURL();
   };
 
@@ -100,11 +105,17 @@ function widgetsInit(canvasController) {
     }
   });
 
-  $("#padding-slider").slider().on("slide", function(slideEvt) {
-    canvasController.setMargin(slideEvt.value);
+  var mySlider = new Slider("#padding-slider", {
+
+  });
+
+  mySlider.on("slide", function(value) {
+    canvasController.setMargin(value);
     canvasController.reloadCanvas(true);
   });
 
+//mySlider.setValue(canvasController.getRadius());
+mySlider.setValue(200);
 
   $('.demo2').colorpicker({
     customClass: 'colorpicker-2x',
