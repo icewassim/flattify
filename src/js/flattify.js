@@ -78,6 +78,11 @@ window.onload = function() {
     canvasController.reloadCanvas(true);
   };
 
+  document.getElementById("long-shadow-left").onclick = function() {
+    canvasController.setShadow(3);
+    canvasController.reloadCanvas(true);
+  };
+
   document.getElementById("half-shadow").onclick = function() {
     canvasController.setShadow(2);
     canvasController.reloadCanvas(true);

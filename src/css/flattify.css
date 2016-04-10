@@ -101,6 +101,14 @@ header {
   border-radius: 10px;
 }
 
+#long-shadow-left {
+  background-image: url("/pics/shadowfyleft.png");
+  background-size: 100%;
+  border: 0px;
+  border: none;
+  border-radius: 10px;
+}
+
 #half-shadow {
   background-image: url("/pics/half-shadow.png");
   background-size: 100%;

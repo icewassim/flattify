@@ -43,11 +43,14 @@ class canvasController {
     this.iconCanvas.init(this.options.backgroundColor);
     switch (this.options.shadow) {
       case 1:
-        this.iconCanvas.shadowfy();
+        this.iconCanvas.shadowfyRight();
         break;
       case 2:
-          this.iconCanvas.halfMaterial(this.options.margin);
-          break;
+        this.iconCanvas.halfMaterial(this.options.margin);
+        break;
+      case 3:
+        this.iconCanvas.shadowfyLeft();
+        break;
       case 0:
           break;
       default:
@@ -129,11 +132,14 @@ class canvasController {
     this.iconCanvas.init(this.options.backgroundColor);
     switch (this.options.shadow) {
       case 1:
-        this.iconCanvas.shadowfy();
+        this.iconCanvas.shadowfyRight();
         break;
       case 2:
-          this.iconCanvas.halfMaterial(this.options.margin);
-          break;
+        this.iconCanvas.halfMaterial(this.options.margin);
+        break;
+      case 3:
+        this.iconCanvas.shadowfyLeft();
+        break;
       case 0:
           break;
       default:
