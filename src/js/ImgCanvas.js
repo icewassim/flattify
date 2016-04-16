@@ -51,17 +51,17 @@ class ImgCanvas {
   }
 
   setShadowPixelRight(linesIndex, columnsIndex, shadowOffset, shadowColor) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = shadowColor.r || this.background.r - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = shadowColor.g || this.background.g - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = shadowColor.b || this.background.b - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = shadowColor.a || this.background.a;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = shadowColor.r !== null? shadowColor.r : this.background.r - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = shadowColor.g !== null? shadowColor.g : this.background.g - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = shadowColor.b !== null? shadowColor.b : this.background.b - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = shadowColor.a !== null? shadowColor.a : this.background.a;
   }
 
   setShadowPixelLeft(linesIndex, columnsIndex, shadowOffset, shadowColor) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].r = shadowColor.r || this.background.r - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].g = shadowColor.g || this.background.g - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].b = shadowColor.b || this.background.b - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].a = shadowColor.a || this.background.a;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].r = shadowColor.r !== null? shadowColor.r : this.background.r - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].g = shadowColor.g !== null? shadowColor.g : this.background.g - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].b = shadowColor.b !== null? shadowColor.b : this.background.b - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].a = shadowColor.a !== null? shadowColor.a : this.background.a;
   }
 
   getPixelFromImgData(linesIndex, columnsIndex) {
