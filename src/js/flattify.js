@@ -156,8 +156,8 @@ mySlider.setValue(200);
       }
     }
   }).on('changeColor.colorpicker', function(event) {
-    canvasController.reloadColors(event.color.toHex());
-    canvasController.reloadCanvas(false);
+    canvasController.setShadowColor(event.color.toHex());
+    canvasController.reloadCanvas(true);
   });
 
 }

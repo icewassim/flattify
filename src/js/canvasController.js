@@ -14,6 +14,12 @@ class canvasController {
         b: 255,
         a: 255
       },
+      shadowColor:{
+        r:null,
+        g:null,
+        b:null,
+        a:null
+      },
       selectedColor :null,
       shape: "circle",
       radius: null,
@@ -43,13 +49,13 @@ class canvasController {
     this.iconCanvas.init(this.options.backgroundColor);
     switch (this.options.shadow) {
       case 1:
-        this.iconCanvas.shadowfyRight();
+        this.iconCanvas.shadowfyRight(this.options.shadowColor);
         break;
       case 2:
         this.iconCanvas.halfMaterial(this.options.margin);
         break;
       case 3:
-        this.iconCanvas.shadowfyLeft();
+        this.iconCanvas.shadowfyLeft(this.options.shadowColor);
         break;
       case 0:
           break;
@@ -71,7 +77,6 @@ class canvasController {
 
     this.ctx.fillStyle = colorStyleStr;
     this.ctx.strokeStyle = colorStyleStr;
-    this.ctx.beginPath();
     if (this.options.shape === "rect") {
       console.log(this.options.margin);
       this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
@@ -132,13 +137,13 @@ class canvasController {
     this.iconCanvas.init(this.options.backgroundColor);
     switch (this.options.shadow) {
       case 1:
-        this.iconCanvas.shadowfyRight();
+        this.iconCanvas.shadowfyRight(this.options.shadowColor);
         break;
       case 2:
         this.iconCanvas.halfMaterial(this.options.margin);
         break;
       case 3:
-        this.iconCanvas.shadowfyLeft();
+        this.iconCanvas.shadowfyLeft(this.options.shadowColor);
         break;
       case 0:
           break;
@@ -187,7 +192,7 @@ class canvasController {
 
   selectColor(color) {
     if(this.isValidPixel(color) === false ) {
-      console.error("Invalid color !! ",c);
+      console.error("Invalid color !! ",color);
       return false;
     }
     this.options.selectedColor = color;
@@ -211,6 +216,17 @@ class canvasController {
     }
     this.ctx.lineWidth = 1;
     this.ctx.stroke();
+  }
+
+
+  setShadowColor(color) {
+    let pixel = this.hexToRgb(color);
+
+    if (this.isValidPixel(pixel) === false) {
+      console.error("invalid color");
+      return false;
+    }
+    this.options.shadowColor = pixel;
   }
 
   setShadow(shadowType) {

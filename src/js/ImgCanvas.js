@@ -50,19 +50,18 @@ class ImgCanvas {
     }
   }
 
-  setShadowPixelRight(linesIndex, columnsIndex, shadowOffset) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = this.background.r - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = this.background.g - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = this.background.b - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = this.background.a;
+  setShadowPixelRight(linesIndex, columnsIndex, shadowOffset, shadowColor) {
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].r = shadowColor.r || this.background.r - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].g = shadowColor.g || this.background.g - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].b = shadowColor.b || this.background.b - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex + shadowOffset].a = shadowColor.a || this.background.a;
   }
 
-
-  setShadowPixelLeft(linesIndex, columnsIndex, shadowOffset) {
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].r = this.background.r - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].g = this.background.g - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].b = this.background.b - 50;
-    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].a = this.background.a;
+  setShadowPixelLeft(linesIndex, columnsIndex, shadowOffset, shadowColor) {
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].r = shadowColor.r || this.background.r - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].g = shadowColor.g || this.background.g - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].b = shadowColor.b || this.background.b - 50;
+    this.imgMatrix[linesIndex + shadowOffset][columnsIndex - shadowOffset].a = shadowColor.a || this.background.a;
   }
 
   getPixelFromImgData(linesIndex, columnsIndex) {
@@ -74,7 +73,7 @@ class ImgCanvas {
     return pixel;
   }
 
-  shadowfyRight() {
+  shadowfyRight(shadowColor) {
     for (let i = 0; i < this.imgMatrix.length; i++) {
       for (let j = 0; j < this.imgMatrix[i].length; j++) {
         //if (this.imgMatrix[i][j].isBackground !== true && this.imgMatrix[i][j].a !== 0) {
@@ -82,7 +81,7 @@ class ImgCanvas {
           //if(this.imgMatrix[i][j].r == 255 && this.imgMatrix[i][j].g == 255 && this.imgMatrix[i][j].b == 255){
           for (let shadowOffset = 1; shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix[i + shadowOffset].length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j + shadowOffset].isBackground === true) {
-              this.setShadowPixelRight(i, j, shadowOffset);
+              this.setShadowPixelRight(i, j, shadowOffset,shadowColor);
             }
           }
         }
@@ -90,7 +89,7 @@ class ImgCanvas {
     }
   }
 
-  shadowfyLeft() {
+  shadowfyLeft(shadowColor) {
     for (let i =  this.imgMatrix.length -1; i > 0; i--) {
       for (let j =  this.imgMatrix.length -1; j > 0; j--) {
         //if (this.imgMatrix[i][j].isBackground !== true && this.imgMatrix[i][j].a !== 0) {
@@ -98,7 +97,7 @@ class ImgCanvas {
           //if(this.imgMatrix[i][j].r == 255 && this.imgMatrix[i][j].g == 255 && this.imgMatrix[i][j].b == 255){
           for (let shadowOffset = 1;j - shadowOffset>0 && shadowOffset + i < this.imgMatrix.length && shadowOffset + j < this.imgMatrix[i + shadowOffset].length; shadowOffset++) {
             if (this.imgMatrix[i + shadowOffset][j - shadowOffset].isBackground === true) {
-              this.setShadowPixelLeft(i, j, shadowOffset);
+              this.setShadowPixelLeft(i, j, shadowOffset,shadowColor);
             }
           }
         }
