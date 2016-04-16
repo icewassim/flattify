@@ -12,23 +12,6 @@ window.onload = function() {
     canvasController.reloadCanvas(true);
   };
 
-  document.getElementById("canvas").onclick = function(e) {
-    var pos = findPos(this);
-    var x = e.pageX - pos.x;
-    var y = e.pageY - pos.y;
-    var coord = "x=" + x + ", y=" + y;
-    var c = this.getContext('2d');
-    var p = c.getImageData(x, y, 1, 1).data;
-    var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-    canvasController.selectColor({
-      r: p[0],
-      g: p[1],
-      b: p[2],
-      a: 1
-    });
-    $('.demo3').colorpicker("show");
-  };
-
   function findPos(obj) {
     var curleft = 0,
       curtop = 0;
@@ -51,11 +34,12 @@ window.onload = function() {
       throw "Invalid color component";
     return ((r << 16) | (g << 8) | b).toString(16);
   }
-  /*
+
     document.getElementById('canvas').onmousedown = function (e) {
-      canvasController.reloadCanvas(e);
+      canvasController.setMouseOffset(e);
+      canvasController.reloadCanvas(true);
     };
-  */
+
   document.getElementById("circular").onclick = function() {
     canvasController.setBackgroundShape("circle");
     canvasController.reloadCanvas(true);

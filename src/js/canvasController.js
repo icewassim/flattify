@@ -23,6 +23,8 @@ class canvasController {
       selectedColor :null,
       shape: "circle",
       radius: null,
+      mouseXOffset:0,
+      mouseYOffset:0,
       shadow: 1
     };
 
@@ -120,17 +122,24 @@ class canvasController {
     this.options.backgroundColor = pixel;
   }
 
+  setMouseOffset(mouseEvent) {
+    if(!mouseEvent)
+      return true;
+      
+    this.options.mouseXOffset = mouseEvent.offsetX - this.icon.width/2;
+    this.options.mouseYOffset = mouseEvent.offsetY - this.icon.height/2;
+    console.log(this.options);
+  }
+
   reloadCanvas(reloadBackground) {
-    let imgData,
-        mouseXOffset = 0,
-        mouseYOffset = 0;
+    let imgData;
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.canvas.height = this.icon.height + this.options.margin;
     this.canvas.width = this.icon.width + this.options.margin;
     this.initBackground();
-    this.ctx.drawImage(this.icon, this.options.margin / 2 + mouseXOffset, this.options.margin / 2 + mouseYOffset);
-      imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
+    this.ctx.drawImage(this.icon, this.options.margin / 2 + this.options.mouseXOffset, this.options.margin / 2 + this.options.mouseYOffset);
+    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
     if(reloadBackground === true) {
       this.iconCanvas = new ImgCanvas(imgData);
     }
