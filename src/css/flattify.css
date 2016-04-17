@@ -56,7 +56,6 @@ header {
   border-radius: 5px;
   margin-left: 10px;
 }
-
 #upload-icon {
   color: #0086CD;
   border: 1px solid #0086CD;
@@ -100,7 +99,6 @@ header {
   border: none;
   border-radius: 10px;
 }
-
 #long-shadow-left {
   background-image: url("/pics/shadowfyleft.png");
   background-size: 100%;
@@ -108,7 +106,6 @@ header {
   border: none;
   border-radius: 10px;
 }
-
 #half-shadow {
   background-image: url("/pics/half-shadow.png");
   background-size: 100%;
@@ -116,8 +113,6 @@ header {
   border: none;
   border-radius: 10px;
 }
-
-
 #no-shadow {
   background-image: url("/pics/no-shadow.png");
   background-color: transparent;
@@ -128,7 +123,8 @@ header {
   position: absolute;
   z-index: 1;
   width: 100%;
-  top: 400px;
+  /*top: 400px;*/
+  top: 815px;
 }
 #header-title {
   color: white;
@@ -155,14 +151,12 @@ header {
   margin-top: 200px;
   left: 30%;
 }
-
-input[type=file]{
+input[type=file] {
   background-color: transparent;
   color: white;
   width: 172px;
   border: none;
 }
-
 #upload-icon-header:hover {
   text-decoration: none;
 }
@@ -283,7 +277,6 @@ input[type=file]{
   float: right;
   margin-bottom: 50px;
 }
-
 .canvas-container {
   background-image: url("/pics/transparent.png");
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -294,4 +287,24 @@ input[type=file]{
   position: absolute;
   left: 20%;
   top: -24px;
+}
+#preview-icons-container {
+  border-top: 35px solid #EAEA88;
+  display: block;
+  width: 100%;
+  background-color: #70787D;
+  margin-top: 248px;
+  padding: 24px;
+  text-align: center;
+}
+#preview-icons-container img {
+  opacity: 0.7;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+  height: 30px;
+  cursor: pointer;
+}
+#preview-icons-container img:hover {
+  opacity: 1;
 }

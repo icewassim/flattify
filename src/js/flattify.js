@@ -77,10 +77,12 @@ window.onload = function() {
     $("#fake-form").submit();
   });
 
-
+  $('#preview-icons-container img').click(function() {
+    $("#source").attr("src",this.getAttribute("src"));
+    canvasController.reloadCanvas(true);
+  });
 
   document.getElementById("download-canvas").onclick = function() {
-    console.log("dsqds");
     this.href = canvasController.toDataURL();
   };
 
