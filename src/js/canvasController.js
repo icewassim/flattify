@@ -7,24 +7,24 @@ class canvasController {
 
     //default options
     this.options = {
-      margin: Math.max(this.icon.height,this.icon.width)/2,
+      margin: Math.max(this.icon.height, this.icon.width) / 2,
       backgroundColor: {
         r: 0,
         g: 184,
         b: 255,
         a: 255
       },
-      shadowColor:{
-        r:null,
-        g:null,
-        b:null,
-        a:null
+      shadowColor: {
+        r: null,
+        g: null,
+        b: null,
+        a: null
       },
-      selectedColor :null,
+      selectedColor: null,
       shape: "circle",
       radius: null,
-      mouseXOffset:0,
-      mouseYOffset:0,
+      mouseXOffset: 0,
+      mouseYOffset: 0,
       shadow: 1
     };
 
@@ -60,7 +60,7 @@ class canvasController {
         this.iconCanvas.shadowfyLeft(this.options.shadowColor);
         break;
       case 0:
-          break;
+        break;
       default:
     }
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
@@ -70,7 +70,7 @@ class canvasController {
     let centerX = this.canvas.width / 2,
       centerY = this.canvas.height / 2,
       cornerRadius = 20,
-      radius = this.options.radius || Math.max(this.icon.height, this.icon.width) - this.icon.height/4,
+      radius = this.options.radius || Math.max(this.icon.height, this.icon.width) - this.icon.height / 4,
       colorStyleStr = "rgba(" +
       this.options.backgroundColor.r + "," +
       this.options.backgroundColor.g + "," +
@@ -81,7 +81,7 @@ class canvasController {
     this.ctx.strokeStyle = colorStyleStr;
     if (this.options.shape === "rect") {
       console.log(this.options.margin);
-      this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width +this.options.margin, false);
+      this.ctx.rect(0, 0, this.canvas.height + this.options.margin, this.canvas.width + this.options.margin, false);
     } else if (this.options.shape === "round-rect") {
       this.ctx.lineJoin = "round";
       this.ctx.lineWidth = cornerRadius;
@@ -96,12 +96,12 @@ class canvasController {
   }
 
   setMargin(margin) {
-      this.options.radius = margin - this.icon.height/4;
-      this.options.margin = margin;
+    this.options.radius = margin - this.icon.height / 4;
+    this.options.margin = margin;
   }
 
   getRadius() {
-    return this.options.radius ||  Math.max(this.icon.height, this.icon.width) - this.icon.height/4;
+    return this.options.radius || Math.max(this.icon.height, this.icon.width) - this.icon.height / 4;
   }
 
   setRadius(radius) {
@@ -123,11 +123,11 @@ class canvasController {
   }
 
   setMouseOffset(mouseEvent) {
-    if(!mouseEvent)
+    if (!mouseEvent)
       return true;
-      
-    this.options.mouseXOffset = mouseEvent.offsetX - this.icon.width/2;
-    this.options.mouseYOffset = mouseEvent.offsetY - this.icon.height/2;
+
+    this.options.mouseXOffset = mouseEvent.offsetX - this.icon.width / 2;
+    this.options.mouseYOffset = mouseEvent.offsetY - this.icon.height / 2;
     console.log(this.options);
   }
 
@@ -139,8 +139,8 @@ class canvasController {
     this.canvas.width = this.icon.width + this.options.margin;
     this.initBackground();
     this.ctx.drawImage(this.icon, this.options.margin / 2 + this.options.mouseXOffset, this.options.margin / 2 + this.options.mouseYOffset);
-    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin , this.width + this.options.margin);
-    if(reloadBackground === true) {
+    imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
+    if (reloadBackground === true) {
       this.iconCanvas = new ImgCanvas(imgData);
     }
     this.iconCanvas.init(this.options.backgroundColor);
@@ -155,7 +155,7 @@ class canvasController {
         this.iconCanvas.shadowfyLeft(this.options.shadowColor);
         break;
       case 0:
-          break;
+        break;
       default:
     }
     this.ctx.putImageData(this.iconCanvas.imgData, 0, 0);
@@ -200,22 +200,22 @@ class canvasController {
   }
 
   selectColor(color) {
-    if(this.isValidPixel(color) === false ) {
-      console.error("Invalid color !! ",color);
+    if (this.isValidPixel(color) === false) {
+      console.error("Invalid color !! ", color);
       return false;
     }
     this.options.selectedColor = color;
   }
 
- reloadColors(color) {
-   let pixel = this.hexToRgb(color);
+  reloadColors(color) {
+    let pixel = this.hexToRgb(color);
 
-   if (this.isValidPixel(pixel) === false) {
-     console.error("invalid color");
-     return false;
-   }
-   this.iconCanvas.reloadColors(this.options.selectedColor,pixel);
- }
+    if (this.isValidPixel(pixel) === false) {
+      console.error("invalid color");
+      return false;
+    }
+    this.iconCanvas.reloadColors(this.options.selectedColor, pixel);
+  }
 
   drawPolygone(numberOfSides, centerX, centerY, radius) {
     this.ctx.beginPath();

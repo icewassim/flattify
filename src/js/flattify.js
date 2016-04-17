@@ -35,10 +35,10 @@ window.onload = function() {
     return ((r << 16) | (g << 8) | b).toString(16);
   }
 
-    document.getElementById('canvas').onmousedown = function (e) {
-      canvasController.setMouseOffset(e);
-      canvasController.reloadCanvas(true);
-    };
+  document.getElementById('canvas').onmousedown = function(e) {
+    canvasController.setMouseOffset(e);
+    canvasController.reloadCanvas(true);
+  };
 
   document.getElementById("circular").onclick = function() {
     canvasController.setBackgroundShape("circle");
@@ -72,6 +72,13 @@ window.onload = function() {
     canvasController.reloadCanvas(true);
   };
 
+  $('input[type=file]').change(function(e){
+    console.log("hello");
+    $("#fake-form").submit();
+  });
+
+
+
   document.getElementById("download-canvas").onclick = function() {
     console.log("dsqds");
     this.href = canvasController.toDataURL();
@@ -103,8 +110,8 @@ function widgetsInit(canvasController) {
     canvasController.reloadCanvas(true);
   });
 
-//mySlider.setValue(canvasController.getRadius());
-mySlider.setValue(200);
+  //mySlider.setValue(canvasController.getRadius());
+  mySlider.setValue(200);
 
   $('.demo2').colorpicker({
     customClass: 'colorpicker-2x',
@@ -143,5 +150,4 @@ mySlider.setValue(200);
     canvasController.setShadowColor(event.color.toHex());
     canvasController.reloadCanvas(true);
   });
-
 }

@@ -1,6 +1,8 @@
 const express = require('express'),
   consolidate = require('consolidate'),
   path = require('path'),
+  busboy = require("connect-busboy"),
+  fs =  require('fs'),
   app = express();
 
 var port = process.env.PORT || 3000;
@@ -19,8 +21,10 @@ app.use('/bootstrap', express.static(__dirname + '/../bower_components/bootstrap
 app.use('/jquery', express.static(__dirname + '/../bower_components/jquery/dist'));
 app.use('/bootstrap-toggle', express.static(__dirname + '/../bower_components/bootstrap-toggle'));
 app.use('/css', express.static(__dirname + '/css'));
+app.use('/icons', express.static(__dirname + '/uploaded-icons'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+app.use(busboy());
 
 app.listen(port, function(err) {
   if (err) {
@@ -30,5 +34,27 @@ app.listen(port, function(err) {
 });
 
 app.get('/', function(req, res) {
-  res.status(200).render('index');
+  console.log(req.query.icon);
+  var icon = "twitter.png";
+  if(req.query.icon)
+    icon = req.query.icon;
+
+  res.status(200).render('index',{'icon':icon});
+});
+
+app.post('/uploadicon',function (req,res) {
+  var fstream;
+          req.pipe(req.busboy);
+          req.busboy.on('file', function (fieldname, file, filename) {
+              var randomNumber = Math.random() * (100000 - 1) + 1;
+              console.log("Uploading: " + filename);
+
+              //Path where image will be uploaded
+              fstream = fs.createWriteStream(__dirname +"/uploaded-icons/" + randomNumber);
+              file.pipe(fstream);
+              fstream.on('close', function () {
+                  console.log("Upload Finished of " + filename);
+                  res.redirect('/?icon='+randomNumber);           //where to go next
+              });
+          });
 });
