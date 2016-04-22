@@ -312,7 +312,7 @@ input[type=file] {
   height: 100%;
   padding-top: 10%;
   background-image: url("/pics/background.png");
-  background-size: fill;
+  background-size: 100%;
   position: absolute;
   -webkit-box-shadow: -4px -8px 11px 14px #777;
   -moz-box-shadow: -4px -8px 11px 14px #777;
