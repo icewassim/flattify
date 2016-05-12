@@ -129,6 +129,7 @@ header {
   width: 100%;
   /*top: 400px;*/
   top: 112%;
+  margin-bottom:80px;
 }
 #header-title, #header-description {
   color: white;
@@ -317,7 +318,7 @@ input[type=file] {
   height: 100%;
   padding-top: 10%;
   background-image: url("/pics/background.png");
-  background-size: 100%;
+  background-size: cover;
   position: absolute;
   -webkit-box-shadow: -4px -8px 11px 14px #777;
   -moz-box-shadow: -4px -8px 11px 14px #777;
