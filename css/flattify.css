@@ -127,9 +127,7 @@ header {
   position: absolute;
   z-index: 1;
   width: 100%;
-  /*top: 400px;*/
-  top: 112%;
-  margin-bottom:80px;
+  height: 80%;
 }
 #header-title, #header-description {
   color: white;
