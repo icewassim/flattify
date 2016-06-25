@@ -119,11 +119,10 @@ header {
   border-color: black;
   background-size: 100%;
 }
-#container {
+#main-container {
   position: absolute;
   z-index: 1;
   width: 100%;
-  /*top: 400px;*/
   top: 112%;
 }
 #header-title, #header-description {
@@ -339,4 +338,15 @@ input[type=file] {
 .arrow-down img {
   width: 75px;
   opacity: .3;
+}
+
+#icons-container {
+  position: absolute;
+  top: 120%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+#icons-container i{
+  margin: 15px;
 }

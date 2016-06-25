@@ -22,6 +22,7 @@ app.use('/jquery', express.static(__dirname + '/../bower_components/jquery/dist'
 app.use('/bootstrap-toggle', express.static(__dirname + '/../bower_components/bootstrap-toggle'));
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/icons', express.static(__dirname + '/uploaded-icons'));
+app.use('/fonts',express.static(__dirname + '/fonts'));
 app.use('/preview-icons', express.static(__dirname + '/icons'));
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
