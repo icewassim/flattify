@@ -360,3 +360,7 @@ input[type=file] {
 a:hover, a:visited, a:link, a:active {
   text-decoration: none;
 }
+
+#icon-header{
+  padding-top: 10px;
+}

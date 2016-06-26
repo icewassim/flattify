@@ -20,6 +20,7 @@ class canvasController {
         b: null,
         a: null
       },
+      fontAwesome: null,
       selectedColor: null,
       shape: "circle",
       radius: null,
@@ -45,7 +46,14 @@ class canvasController {
     this.canvas.height = this.icon.height + this.options.margin;
     this.canvas.width = this.icon.width + this.options.margin;
     this.initBackground();
-    this.ctx.drawImage(this.icon, this.options.margin / 2, this.options.margin / 2);
+    if(this.options.fontAwesome) {
+      this.ctx.fillStyle = "#fff";
+      this.ctx.font = '140px FontAwesome';
+      this.ctx.fillText(String.fromCharCode("0x"+this.options.fontAwesome.font), 50+this.options.margin / 2, 170+this.options.margin / 2);
+      console.log(this.options.fontAwesome);
+    }else {
+      this.ctx.drawImage(this.icon, this.options.margin / 2, this.options.margin / 2);
+    }
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     this.iconCanvas = new ImgCanvas(imgData);
     this.iconCanvas.init(this.options.backgroundColor);
@@ -138,7 +146,13 @@ class canvasController {
     this.canvas.height = this.icon.height + this.options.margin;
     this.canvas.width = this.icon.width + this.options.margin;
     this.initBackground();
-    this.ctx.drawImage(this.icon, this.options.margin / 2 + this.options.mouseXOffset, this.options.margin / 2 + this.options.mouseYOffset);
+    if(this.options.fontAwesome) {
+      this.ctx.fillStyle = "#fff";
+      this.ctx.font = '140px FontAwesome';
+      this.ctx.fillText(String.fromCharCode("0x"+this.options.fontAwesome.font),100,250);
+    }else {
+      this.ctx.drawImage(this.icon, this.options.margin / 2 + this.options.mouseXOffset, this.options.margin / 2 + this.options.mouseYOffset);
+    }
     imgData = this.ctx.getImageData(0, 0, this.height + this.options.margin, this.width + this.options.margin);
     if (reloadBackground === true) {
       this.iconCanvas = new ImgCanvas(imgData);
