@@ -314,9 +314,9 @@ input[type=file] {
   background-image: url("/pics/background.png");
   background-size: 100%;
   position: absolute;
-  -webkit-box-shadow: -4px -8px 11px 14px #777;
+  /*-webkit-box-shadow: -4px -8px 11px 14px #777;
   -moz-box-shadow: -4px -8px 11px 14px #777;
-  box-shadow: -4px -8px 11px 14px #777;
+  box-shadow: -4px -8px 11px 14px #777;*/
 }
 .arrow-down {
   position: absolute;
@@ -349,4 +349,14 @@ input[type=file] {
 
 #icons-container i{
   margin: 15px;
+  width: 36px;
+  color: grey;
+}
+
+#icons-container i:hover{
+  color: black;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
 }

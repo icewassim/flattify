@@ -6,13 +6,13 @@
 </head>
 
 <body>
-  <link rel="stylesheet" href="css/flattify.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
   <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/color-picker/css/bootstrap-colorpicker.css" rel="stylesheet">
   <link href="/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link href="/css/font-awesome.min.css" rel="stylesheet">
   <link href="/seiyria-bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/flattify.css">
   <div id="header" >
     <span id="header-title">Flattify</span>
     <br />
@@ -26,14 +26,20 @@
       </form>
       Upload Icon
     </a>
-    <a id="choose-from-list">Choose from list</a>
+    <a id="choose-from-list" href="#icon-header">Choose from list</a>
     <br />
     <a href="#container" class="arrow-down">
       <img src="/pics/arrow-down.png"/>
     </a>
   </div>
 <div id="main-container">
-  <div id="icons-container" ></div>
+  <div id="icons-container" >
+    <div id="icon-header">
+      <h2>Choose from list</h2>
+      <hr />
+    </div>
+    <div id="icon-content"></div>
+  </div>
 
   <div id="container">
     <div class="canvas-container">
