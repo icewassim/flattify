@@ -36,7 +36,6 @@ app.listen(port, function(err) {
 });
 
 app.get('/', function(req, res) {
-  console.log(req.query.icon);
   var icon = "twitter.png";
   if(req.query.icon)
     icon = req.query.icon;
