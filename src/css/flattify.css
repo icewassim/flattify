@@ -1,47 +1,136 @@
 * {
   box-sizing: border-box;
 }
-html {
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  background-color: #e9ebf0;
+}
+
+header {
+  background: #438de0;
+  padding: 10px 15px;
+  display: block;
   width: 100%;
-  background-color: #FBFBFB;
+  height: 100px;
+  color: #fff;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12);
 }
-a {
-  text-decoration: none;
-}
-a:hover, a:visited, a:link, a:active {
-  text-decoration: none;
-}
-#flattify-logo {
-  font-size: 30px;
-  font-family: sans-serif;
-  color: #1185FC;
+
+header #logo {
+  font-size: 25px;
+  float: left;
+  margin-left: 30px;
+  margin-top: 25px;
+  font-weight: bold;
+  display: inline-block;
   text-transform: uppercase;
 }
-#container {
-  padding: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
+
+header #description {
+  line-height: 37px;
+  font-size: 32px;
+  margin-left: 100px;
+  margin-top: 3px;
+  display: inline-block;
 }
-#canvas {
+
+header #google-takriz {
+  width: 10px;
+}
+
+#social-sharing {
+  float: right;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+#github-button {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#version {
+  position: absolute;
+  top: 68px;
+  font-weight: bold;
+  left: 400px;
+  font-size: 10px;
+  text-transform: initial;
+}
+
+.main-description{
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 40px;
+  margin-top: 25px;
+  font-size: 18px;
+}
+
+.description-header{
+  display: inline-block;
+  font-weight: 700;
+}
+
+.description-body{
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+.app-container{
+  background-color: white;
+  width: 101%;
+  margin-left: -2%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-top: 30px;
+  padding: 30px;
+  min-height: 410px;
+  display: block;
+}
+
+.upload-container{
+  border: 2px solid #dad9d9;
+  display: inline-block;
+  width: 500px;
+  height: 250px;
+  text-align: center;
+  position: relative;
+}
+
+.button-blue:hover{
+  background-color: #3874b7;
+}
+
+.button-blue{
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  position: absolute;
+  top: 88px;
+  background-color: #438de0;
+  width: 300px;
+  padding: 20px;
+  left: 20%;
+  box-shadow: 4px 4px 6px rgba(27,95,191,0.3);
+}
+
+.choose-from-list-container{
+  text-align: left;;
+  float: right;
+  display: inline-block;
+}#canvas {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
-header {
-  background-color: white;
-  padding: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
-  display: block;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.22);
-  height: 80px;
 }
 .download-button {
   font-size: 20px;
@@ -119,24 +208,6 @@ header {
   border-color: black;
   background-size: 100%;
 }
-#main-container {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  top: 112%;
-}
-#header-title, #header-description {
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 35px;
-  text-align: center;
-  width: 100%;
-  margin-top: 100px;
-}
-#header-title{
-  font-size: 80px;
-}
-
 #upload-icon-header {
   color: white;
   font-family: 'Open Sans', sans-serif;
@@ -306,18 +377,6 @@ input[type=file] {
 #preview-icons-container img:hover {
   opacity: 1;
 }
-#header {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  padding-top: 10%;
-  background-image: url("/pics/background.png");
-  background-size: 100%;
-  position: absolute;
-  /*-webkit-box-shadow: -4px -8px 11px 14px #777;
-  -moz-box-shadow: -4px -8px 11px 14px #777;
-  box-shadow: -4px -8px 11px 14px #777;*/
-}
 .arrow-down {
   position: absolute;
   left: 47%;
@@ -363,4 +422,44 @@ a:hover, a:visited, a:link, a:active {
 
 #icon-header{
   padding-top: 10px;
+}
+
+#icon-content {
+  width: 656px;
+  text-align: left;
+  margin-top: 20px;
+  padding-top: 27px;
+  padding-right: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 329px;
+  background-color: #f0f2f5;
+  border: 2px solid #dad9d9;
+}
+
+#icon-content a{
+  text-decoration: none;
+  font-size: 8px;
+  margin-left: 21px;
+  width: 20px;
+  height: 20px;
+  color: grey;
+  display: inline-block;
+}
+
+.search-header{
+  float: right;
+  padding-left: 30px;
+  display: inline-block;
+}
+
+#icon-content a:hover{
+  color: black;
+}
+
+.search-icon{
+  position: absolute;
+  right: 272px;
+  color: #d2d2d2;
+  top: 261px;
 }

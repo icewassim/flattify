@@ -149,7 +149,6 @@ class canvasController {
     if(this.options.fontAwesome) {
       this.ctx.fillStyle = "#"+this.options.fontAwesome.color;
       this.ctx.font = this.options.fontAwesome.dimension+'px FontAwesome';
-      console.log(this.options.fontAwesome);
       this.ctx.fillText(String.fromCharCode("0x"+this.options.fontAwesome.font),0 + this.canvas.height/2 - this.options.fontAwesome.dimension/2, (this.options.fontAwesome.dimension - 30)/2 +  this.canvas.width/2);
     }else {
       this.ctx.drawImage(this.icon, this.options.margin / 2 + this.options.mouseXOffset, this.options.margin / 2 + this.options.mouseYOffset);
