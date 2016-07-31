@@ -29,7 +29,7 @@
     </header>
     <div id="main-container">
       <div class="main-description">
-        <div class="description-header">Generate your custom Flat icon in Less than 10 seconds</div>
+        <div class="description-header">Easily generate your custom Flat icon in Less than 10 seconds</div>
         <div class="description-body"> Choose an icon from predefined list or upload your own Icons, cuomize the colors, shapes and shadow effects</div>
         <div class="app-container">
           <div class="upload-container">
@@ -42,7 +42,7 @@
           </div>
           <div class="choose-from-list-container">
             <div class="description-header">
-              Or Select From Icon List
+              Or Select From List
             </div>
             <i class="search-icon fa fa-search fa-1x"></i>
             <input placeholder="search" class="search-header" />
@@ -54,33 +54,26 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div id="container" style="display:none;">
+        <div id="container" class="app-container">
       <div class="canvas-container">
         <canvas id="canvas" width="500" height="500" center></canvas>
       </div>
-      <div class="nav-menu-balls"></div>
-      <div class="nav-menu-balls nav-menu-balls-bottom"></div>
-      <div id="nav-menu">
-        <img src="pics/color.png" class="nav-elment">
-        <img src="pics/shape.png" class="nav-elment">
-        <img src="pics/shadow.png" class="nav-elment">
-        <img src="pics/arrows.png" class="nav-elment">
-        <img src="pics/download.png" class="nav-elment">
-      </div>
-      <span >
-        <span class="nav-menu-title-1">Shadow</span>
-        <span class="nav-menu-title-2">Container</span>
-        <span class="nav-menu-title-3  selected">Colors</span>
-        <span class="nav-menu-title-4">Move</span>
-        <a class="nav-menu-title-5"  id="download-canvas"  target="_blank">Download</a>
-        <div style="display:none;">
-          <img id="source" src="icons/{{icon}}">
-        </div>
-      </span>
-
         <span class="color-container tools-container">
+          <span class="nav-menu-title-1 color-picker-label">Icon</span>
+          <br />
+          <div class="input-group demo2">
+            <input type="text" id="colorPicker" value="#00B8FF" class="form-control" />
+            <span class="input-group-addon"><i></i></span>
+          </div>
+
+          <div class="dimension-step">
+            <i class="fa fa-twitter-square fa-1x"></i>
+            <i class="fa fa-twitter-square fa-2x"></i>
+            <i class="fa fa-twitter-square fa-3x"></i>
+            <i class="fa fa-twitter-square fa-4x"></i>
+            <i class="fa fa-twitter-square fa-5x"></i>
+          </div>
+          <hr />
           <span class="nav-menu-title-1 color-picker-label">Background</span>
           <div class="input-group demo2">
             <input type="text" id="colorPicker" value="#00B8FF" class="form-control" />
@@ -92,8 +85,7 @@
             <button id="rect" class="shape"></button>
           </div>
           <div id="margin-slider"></div>
-          <input id="padding-slider" type="text" data-slider-min="0" data-slider-max="300" data-slider-step="1" data-slider-value="3" />
-
+            <input id="padding-slider" type="text" data-slider-min="0" data-slider-max="300" data-slider-step="1" data-slider-value="3" />
           <br />
           <hr />
           <span class="nav-menu-title-1 color-picker-label">Shadow</span>
@@ -125,6 +117,7 @@
           <button id="rect" class="shape"></button>
       </div>
     </div>
+      </div>
   </div>
   </body>
 <script src="/jquery/jquery.min.js"></script>
