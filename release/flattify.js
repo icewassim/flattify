@@ -584,14 +584,15 @@ window.onload = function () {
     $("#source").attr("src", this.getAttribute("src"));
     canvasController.reloadCanvas(true);
   });
-
+/*
   document.getElementById("download-canvas").onclick = function () {
     this.href = canvasController.toDataURL();
   };
-
+  
   document.getElementById("download-canvas-icon").onclick = function () {
     this.href = canvasController.toDataURL();
   };
+*/
 };
 
 function widgetsInit(canvasController) {
