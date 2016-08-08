@@ -4,108 +4,126 @@
   <meta charset="utf-8">
   <title>Flattify</title>
 </head>
-
-<body>
   <link rel="stylesheet" href="css/flattify.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap-colorpicker.css" rel="stylesheet">
   <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
   <link href="css/bootstrap-slider.min.css" rel="stylesheet">
 
+<body>
 
-  <div id="header" >
-    <span id="header-title">Flattify</span>
-    <br />
-    <span id="header-description">An Easy to use Flat Icons Editor</span>
-    <br />
-    <br />
-    <br />
-    <a id="upload-icon-header" >
-      <form action="/uploadicon"  enctype="multipart/form-data" method="post" id="fake-form">
-        <input name="iconup" id="fake-input" type="file"  value="onchange=&quot;return validateFileExtension(this)&quot;" style="position:absolute;opacity:0;cursor:pointer">
-      </form>
-      Upload Icon
-    </a>
-    <span id="choose-from-list">Choose from list</span>
-    <br />
-    <a href="#container" class="arrow-down">
-      <img src="pics/arrow-down.png"/>
-    </a>
-  </div>
-  <div id="container">
-    <div class="canvas-container">
-      <canvas id="canvas" width="500" height="500" center></canvas>
-    </div>
-    <div class="nav-menu-balls"></div>
-    <div class="nav-menu-balls nav-menu-balls-bottom"></div>
-    <div id="nav-menu">
-      <img src="pics/color.png" class="nav-elment">
-      <img src="pics/shape.png" class="nav-elment">
-      <img src="pics/shadow.png" class="nav-elment">
-      <img src="pics/arrows.png" class="nav-elment">
-      <img src="pics/download.png" class="nav-elment">
-    </div>
-    <span >
-      <span class="nav-menu-title-1">Shadow</span>
-      <span class="nav-menu-title-2">Container</span>
-      <span class="nav-menu-title-3  selected">Colors</span>
-      <span class="nav-menu-title-4">Move</span>
-      <a class="nav-menu-title-5"  id="download-canvas-icon" href="#" target="_blank">Download</a>
-      <div style="display:none;">
-        <img id="source" src="pics/twitter.png">
-      </div>
-    </span>
-
-      <span class="color-container tools-container">
-        <span class="nav-menu-title-1 color-picker-label">Background</span>
-        <div class="input-group demo2">
-          <input type="text" id="colorPicker" value="#00B8FF" class="form-control" />
-          <span class="input-group-addon"><i></i></span>
+    <header>
+      <div id="logo">Flattify</div>
+      <div id="description">Free Flat Icons
+        <br /> Generator</div>
+      <div id="version">v1.0</div>
+      <div id="social-sharing">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-show-count="false"><i></i>Tweet</a>
+        <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div id="github-button">
+          <a class="github-button" href="http://github.com/icewassim/flattify" data-style="mega" data-count-href="/icewassim/flattify/stargazers" data-count-api="/repos/icewassim/flattify#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star icewassim/flattify on GitHub">Star</a>
         </div>
-        <div class="shapes-container">
+      </div>
+    </header>
+    <div id="main-container">
+      <div class="main-description">
+        <div class="description-header">Easily generate your custom Flat icon in Less than 10 seconds</div>
+        <div class="description-body"> Choose an icon from predefined list or upload your own Icons, cuomize the colors, shapes and shadow effects</div>
+        <div class="app-container">
+          <div class="upload-container">
+            <div class="button-blue">
+              <form action="/uploadicon"  enctype="multipart/form-data" method="post" id="fake-form">
+                <input name="iconup" id="fake-input" type="file"  value="onchange=&quot;return validateFileExtension(this)&quot;" style="position:absolute;opacity:0;cursor:pointer">
+              </form>
+              UPLOAD ICON
+            </div>
+          </div>
+          <div class="choose-from-list-container">
+            <div class="description-header">
+              Or Select From List
+            </div>
+            <i class="search-icon fa fa-search fa-1x"></i>
+            <input placeholder="search" class="search-header" />
+            <div id="icon-content">
+
+            </div>
+            <div style="display:none;">
+              <img id="source" src="pics/twitter.png">
+            </div>
+          </div>
+        </div>
+        <div id="container" class="app-container">
+      <div class="canvas-container">
+        <canvas id="canvas" width="500" height="500" center></canvas>
+      </div>
+        <span class="color-container tools-container">
+          <span class="nav-menu-title-1 color-picker-label">Icon</span>
+          <br />
+          <div class="input-group demo2">
+            <input type="text" id="colorPicker" value="#00B8FF" class="form-control" />
+            <span class="input-group-addon"><i></i></span>
+          </div>
+
+          <div class="dimension-step">
+            <i class="fa fa-twitter-square fa-1x"></i>
+            <i class="fa fa-twitter-square fa-2x"></i>
+            <i class="fa fa-twitter-square fa-3x"></i>
+            <i class="fa fa-twitter-square fa-4x"></i>
+            <i class="fa fa-twitter-square fa-5x"></i>
+          </div>
+          <hr />
+          <span class="nav-menu-title-1 color-picker-label">Background</span>
+          <div class="input-group demo2">
+            <input type="text" id="colorPicker" value="#00B8FF" class="form-control" />
+            <span class="input-group-addon"><i></i></span>
+          </div>
+          <div class="shapes-container">
+            <button id="round-rect" class="shape"></button>
+            <button id="circular" class="shape"></button>
+            <button id="rect" class="shape"></button>
+            <button id="download-canvas" style="display:none;"></button>
+          </div>
+          <div id="margin-slider"></div>
+            <input id="padding-slider" type="text" data-slider-min="0" data-slider-max="300" data-slider-step="1" data-slider-value="3" />
+          <br />
+          <hr />
+          <span class="nav-menu-title-1 color-picker-label">Shadow</span>
+          <input id="toggle-one" checked type="checkbox" style="margin-left:20px;">
+          <div id="shadowPicker" class="input-group demo3">
+            <input type="text" value="#0086CD" class="form-control" />
+            <span class="input-group-addon"><i></i></span>
+          </div>
+          <div style="float:right;">
+            <button id="long-shadow-left" class="shape"></button>
+            <button id="long-shadow" class="shape"></button>
+            <button id="half-shadow" class="shape"></button>
+          </div>
+          <br />
+          <hr />
+        </span>
+
+        <span class="shadow-container" style="display:none;" >
+          <span class="nav-menu-title-1 color-picker-label">Shadow Effect</span>
+          <br />
+          <br />
+        </span>
+
+      <div class="controls-container" style="display:none;">
+          <div class="component-title first">Shape</div>
+          <hr>
           <button id="round-rect" class="shape"></button>
           <button id="circular" class="shape"></button>
           <button id="rect" class="shape"></button>
-        </div>
-        <div id="margin-slider"></div>
-        <input id="padding-slider" type="text" data-slider-min="0" data-slider-max="300" data-slider-step="1" data-slider-value="3" />
-
-        <br />
-        <hr />
-        <span class="nav-menu-title-1 color-picker-label">Shadow</span>
-        <input id="toggle-one" checked type="checkbox" style="margin-left:20px;">
-        <div id="shadowPicker" class="input-group demo3">
-          <input type="text" value="#0086CD" class="form-control" />
-          <span class="input-group-addon"><i></i></span>
-        </div>
-        <div style="float:right;">
-          <button id="long-shadow-left" class="shape"></button>
-          <button id="long-shadow" class="shape"></button>
-          <button id="half-shadow" class="shape"></button>
-        </div>
-        <br />
-        <hr />
-      </span>
-
-      <span class="shadow-container" style="display:none;" >
-        <span class="nav-menu-title-1 color-picker-label">Shadow Effect</span>
-        <br />
-        <br />
-      </span>
-
-    <div class="controls-container" style="display:none;">
-        <div class="component-title first">Shape</div>
-        <hr>
-        <button id="round-rect" class="shape"></button>
-        <button id="circular" class="shape"></button>
-        <button id="rect" class="shape"></button>
+      </div>
     </div>
+      </div>
   </div>
 </body>
 <script src="release/jquery.min.js"></script>
-<script src="release/bootstrap.min.js"></script>
-<script src="release/bootstrap-toggle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="release/bootstrap-colorpicker.js"></script>
 <script src="release/bootstrap-slider.min.js"></script>
 <script src="release/flattify.js"></script>
