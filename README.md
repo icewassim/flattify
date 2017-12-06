@@ -4,7 +4,7 @@ An easy to use icons editor for Flat Icons Fans.
 [![travis](https://api.travis-ci.org/icewassim/flattify.svg?branch=master)](https://travis-ci.org/icewassim/flattify)
 
 #Demo
- [http://flattify.com/](http://flattify.com/)
+ [https://icewassim.github.io/flattify/](https://icewassim.github.io/flattify/)
 
 #Installation
 * [Git](https://git-scm.com/): `git clone https://github.com/icewassim`
